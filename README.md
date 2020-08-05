@@ -17,7 +17,12 @@
  > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
 
 ## Project Description
+
 This Financial Management Application is intended to help users keep track of their money, be it in a checking or savings account. Upon logging in, existing users have the option to view their balnace, deposit or withdraw funds, and create a projected savings goal. New users will also have access to these options after creating a new account. 
+
+This project will be written in C++.
+Tools:
+* Tool to fetch the most current stock market prices
 
 Raison D'etre:
 Finance management is an essential part of life for everyone. This app helps users to practice and plan their financial life by providing money management features that are consistent with their account balance.  Moreover, it helps users to see their stock profit at a specific period of time (customizable by themselves).
