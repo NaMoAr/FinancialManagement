@@ -17,7 +17,10 @@
  > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
 
 ## Project Description
- This application will be written in C++.
+This project will be written in C++.
+
+Tools:
+* Tool to fetch the most current stock market prices
 
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to 
