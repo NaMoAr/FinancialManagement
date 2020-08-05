@@ -1,3 +1,6 @@
+Input and output:
+The input of our applicatin would be the user's information such as first and last name, the value of money that they want to deposite, widthraw, or transfer,and the value of money they want to put in saving account in order to invest. 
+The output of our application would be the account holser's balance, account history, profit for a costomized perios of time.  
  > Remove prompt text (lines beginning with "\>") and replace with your project specifics (including this prompt)
  > Replace anything between \<...\> with your project specifics and remove angle brackets. 
 # \<Project title\>
