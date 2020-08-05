@@ -1,3 +1,5 @@
+Raison D'etre: 
+Finance management is an essential part of life for everyone. Unfortunately, we never practice it up to the point that we actually spend our money, and we revise our attitude after we screw. This app helps users to practice and plan their finacial life by providing money management features. Moreover, it helps users to see their stock profit at a specific AAperiod of time (customizable by themselves).
  > Remove prompt text (lines beginning with "\>") and replace with your project specifics (including this prompt)
  > Replace anything between \<...\> with your project specifics and remove angle brackets. 
 # \<Project title\>
