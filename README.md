@@ -26,6 +26,7 @@
  >   * [toolname](link) - Short description
  > * What will be the input/output of your project?
  > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
+ 
 Input and output:
 The input of our application would be the user's information such as first and last name, the value of money that they want to deposit, withdraw, or transfer, and the value of money they want to keep in the saving account in order to invest on Nasdaq Composite stock market with the price at that time. (The type and numbers of stock market could expand)
 The output of our application would be the account of the holder's balance, account history, profit for a customized period of time, a budget planning based on checking account's balance. 
