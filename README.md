@@ -53,8 +53,7 @@ Finance management is an essential part of life for everyone. This app helps use
  > Include a class diagram and a description of the diagram. This should be in sufficient detail that another group could pick up the project this point and successfully complete it.
  
 
-![OMT Diagram](https://user-images.githubusercontent.com/59351131/89860151-a5e35c00-db57-11ea-87c8-364d2ceb57ef.png)
-
+![OMT Diagram](https://user-images.githubusercontent.com/59351131/89957387-1e93f800-dbec-11ea-9044-0c050a6d1975.png)
 
 
 
