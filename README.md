@@ -36,11 +36,10 @@ Tools:
 
 Input and output:
 The input of our application would be the user's information such as first and last name, the value of money that they want to deposit, withdraw, or transfer, and the value of money they want to keep in the saving account in order to invest on Nasdaq Composite stock market with the price at that time. (The type and numbers of stock market could expand)
-The output of our application would be the account of the holder's balance, account history, profit for a customized period of time, a budget planning based on checking account's balance. 
+The output of our application would be the balance of an account, account history, profit for a customized period of time, a budget planning based on checking account's balance. 
 
 
 This Financial Management Application is intended to help users keep track of their money, be it in a checking or savings account. Upon logging in, existing users have the option to view their balnace, deposit or withdraw funds, and create a projected savings goal. New users will also have access to these options after creating a new account. 
-
 
 
 
@@ -57,6 +56,11 @@ This Financial Management Application is intended to help users keep track of th
 ## Class Diagram
  > Include a class diagram and a description of the diagram. This should be in sufficient detail that another group could pick up the project this point and successfully complete it.
  
+
+![OMT Diagram](https://user-images.githubusercontent.com/59351131/89957387-1e93f800-dbec-11ea-9044-0c050a6d1975.png)
+
+
+
  > ## Phase III
  > You will need to schedule two check-in's with the TA (during lab hours or office hours) where your entire group will meet with them and discuss:
  > * What you have each done up to this point
