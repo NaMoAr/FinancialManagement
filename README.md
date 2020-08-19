@@ -1,6 +1,3 @@
-  > Remove prompt text (lines beginning with "\>") and replace with your project specifics (including this prompt)
- > Replace anything between \<...\> with your project specifics and remove angle brackets. 
-
 # Financial Management Application
 
  > Authors: \<[Jeffrey McDaniel (Instructor)](https://github.com/jmcda001)\> \<[David Chang](https://github.com/dchan066-862012834)\> \<[Najmeh Mohammadi Arani](https://github.com/NaMoAr)\> \<[Chloe Truong](https://github.com/loveechloee)\>
