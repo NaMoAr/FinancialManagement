@@ -11,12 +11,17 @@ Finance management is an essential part of life for everyone. This app helps use
 
 Languages and tools:
 This project will be written in C++.
+
 Tools:
 * Tool to fetch the most current stock market prices
 
 Input and output:
-The input of our application would be the value of money that user want to deposit, withdraw, or transfer, and the value of money they want to keep in the saving account in order to invest on Nasdaq Composite stock market with the price at that time. (The type and numbers of stock market could expand)
-The output of our application would be the balance of an account, account history, profit for a customized period of time, a budget planning based on checking account's balance. 
+
+The input of our application would be the user's information such as first and last name, the value of money that they want to deposit, withdraw, or transfer, and the value of money they want to keep in the saving account in order to invest on Nasdaq Composite stock market with the price at that time. (The type and numbers of stock market could expand)
+The output of our application would be the account of the holder's balance, account history, profit for a customized period of time, a budget planning based on checking account's balance. 
+This Financial Management Application is intended to help users keep track of their money, be it in a checking or savings account. Upon logging in, existing users have the option to view their balnace, deposit or withdraw funds, and create a projected savings goal. New users will also have access to these options after creating an account. 
+
+
 
 ## Class Diagram
 
