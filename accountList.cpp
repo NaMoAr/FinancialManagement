@@ -36,3 +36,16 @@ void AccountList::traverseDatabase () {  // Final implementation will return an 
 // if none exists it will return NULL
 }
 
+Account* AccountList::logIn() {
+// prompt ID & Password
+// scan list for ID returning null on a fail to find and print "account not found"
+// compare Password returning the account pointer on a match and null on a mismatch, in the fail case print "password incorrect" 
+}
+
+
+void AccountList::logOut() {
+// call relevant account history proxy update functions
+// unset user pointer
+// re call the log in prompt  
+}
+
