@@ -9,6 +9,13 @@ AccountList::~AccountList() {
 // delete the AccountList and terminate the program
 }
 
+
+AccountList* AccountList::GetInstance() {
+// check to see if an accountlist exists, if so return it
+// if it doesnt exist create the object by calling the constructor
+// return the pointer of the object you just created
+}
+
 void AccountList::createAccount () {
 // verify admin status with an admin password
 // request new password
