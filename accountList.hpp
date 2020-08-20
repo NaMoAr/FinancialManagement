@@ -2,7 +2,8 @@
 #define __ACCOUNTLIST_HPP__
 
 #include <unordered_map>
-
+#include <string>
+#include <iostream>
 
 class AccountList {
 
@@ -17,6 +18,9 @@ class AccountList {
 		unordered_map<int,Account*> database = new unordered_map<int,Account*>; // this is our "data" the object stores
 	
 		Account* userPointer = NULL;
+	
+		std::string adminAccess = "96a~eU=tWyVkz'4V"; // a randomly generated 16 character password to verify an admin before allowing access to admin functions
+
 	public:
 
 		AccountList(AccountList &other) = delete// we can't let the object be copyable

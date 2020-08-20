@@ -1,3 +1,5 @@
+#include "AccountList.hpp"
+
 AccountList::AccountList () {
 // call Chloe's class to read the database file
 // Chloe should call the account constructor to create the accounts and add their pointers to the list
@@ -17,11 +19,33 @@ AccountList* AccountList::GetInstance() {
 }
 
 void AccountList::createAccount () {
-// verify admin status with an admin password
-// request new password
-// generate a unique ID
-// create an account object
-// fit the pointer into the map
+	std::string temp = "";
+	std::string pass = "";
+	// verify admin status with an admin password
+	std::cout << "Verify administrator status" << endl;
+	std::cin >> temp;
+	if (temp != AdminAccess) {cout << "Verification failed, terminating operation"<<endl; return;
+	// request new password
+	std::cout << "Assign a password"<<endl;
+	std::cin >> pass;
+	std::cout <<"The password to be assigned is "<< pass << endl; 
+	// generate a unique ID
+	int ID = 0;
+	//ID =  TODO: generation method;
+	std::cout << "account ID generated: " << ID << endl;
+	// assign a type for the account
+	std::cout << "specify account type: 'c' for checking and 's' for savings"
+	char flag = ' ';
+	cin >> flag;
+	// create an account object
+	// fit the pointer into the map
+	}if (flag != 'c' || flag != 's'){
+		cout << "Account type invalid, terminating" << endl; return;
+	}
+	if (flag = 'c') {
+		//TODO: construct and store a checking account object
+	}
+	// TODO:  construct and store a saving account object
 }
 
 void AccountList::deleteAccount () {
