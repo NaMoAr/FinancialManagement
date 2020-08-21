@@ -9,7 +9,7 @@ class CheckingAccountProxy : public Account
 private:
 	CheckingAccount* ptr;
 	stringstream s;
-
+        double monthlyHomeRent = 0.0; 
 public:
 	
 	CheckingAccountProxy(double initialBalance, int userID);
@@ -25,6 +25,11 @@ public:
 
 	
 	void accountHistory();
+        void setMonthlyHomeRent(double homeRent);
+        double getMonthlyHomeRent();
+
+
+
 
 };
 
