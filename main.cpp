@@ -4,6 +4,8 @@
 #include "header/Account.hpp"
 #include "header/CheckingAccount.hpp"
 #include "header/CheckingAccountProxy.hpp"
+#include "header/SavingAccount.hpp"
+#include "header/SavingAccountProxy.hpp"
 #include <vector>
 
 using namespace std;
@@ -11,7 +13,7 @@ using namespace std;
 
 int main()
 {
-    CheckingAccountProxy user1_p(200, 1234);
+    SavingAccountProxy user1_p(200, 5678);
     
    
     string option = "";
@@ -51,12 +53,8 @@ int main()
         
             user1_p.logOut("deposit" , dep, ss);
             user1_p.logOut("withdraw", with, ss);
-          std::fstream f;
-          f.open("hi.txt",std::fstream::out);
-          f << "hi"<<std::endl;
- f << "bye"<<std::endl;
-          f.close();
-       // cout << "The file has been generated" << endl;
+          
+       cout<<"You have logged out successfully"<< endl;
     }
     
     
