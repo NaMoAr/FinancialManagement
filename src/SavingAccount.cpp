@@ -2,8 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "SavingAccount.hpp"
-#include "Account.hpp"
+#include "../header/SavingAccount.hpp"
+#include "../header/Account.hpp"
 #include <ctime>
 #include <chrono>
 
@@ -68,7 +68,7 @@ void SavingAccount::accountHistory()
 	f.open(filename);
 	if (!f) {
 
-		cout << "Cannot open the file!" << endl;
+		cout << "There is no transaction to show!" << endl;
 
 	}
 
