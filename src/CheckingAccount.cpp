@@ -2,8 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "CheckingAccount.h"
-#include "Account.h"
+#include "../header/CheckingAccount.hpp"
+#include "../header/Account.hpp"
 #include <ctime>
 #include <chrono>
 
@@ -12,14 +12,11 @@ using namespace std;
 
 
 
-CheckingAccount::CheckingAccount()
-{
-}
 
-CheckingAccount::CheckingAccount(double initialBalance, string theUserID)
+CheckingAccount::CheckingAccount(double initialBalance, int theUserID)
 {
 	balance = initialBalance;
-	userID.assign(theUserID);
+	userID = theUserID;
 	
 	
 }
@@ -30,13 +27,14 @@ CheckingAccount::~CheckingAccount()
 
 stringstream* CheckingAccount::deposit(double depMoney, stringstream* ss)
 {
-	
-		string filename = userID + ".txt";
-		fstream f;
-		f.open(filename, ios_base::app);
-		f << ss->str();
+                string id = to_string(userID);
+                string filename = id + ".txt";
+		std::fstream f;
+		f.open(filename, std::fstream::in | std::fstream::out | std::fstream::app);
+                f << ss->str();
 		f.close();
 	
+
 	
 	return nullptr;
 }
@@ -44,10 +42,10 @@ stringstream* CheckingAccount::deposit(double depMoney, stringstream* ss)
 stringstream* CheckingAccount::withdraw(double withMoney, stringstream* ss)
 {
 	
-	
-		string filename = userID + ".txt";
-		fstream f;
-		f.open(filename, ios_base::app);
+	        string id = to_string(userID);
+		string filename = id + ".txt";
+		std::fstream f;
+		f.open(filename, std::fstream::in | std::fstream::out | std::fstream::app);
 		f << ss->str();
 		f.close();
 		return nullptr;
@@ -66,13 +64,13 @@ void CheckingAccount::accountHistory()
 {
 	cout << "Today's transactions would appear in the account history the next day after the bank approval."<< endl;
 	
-
-	string filename = userID + ".txt";
-	fstream f;
+        string id = to_string(userID);
+	string filename = id + ".txt";
+	std::fstream f;
 	f.open(filename);
 	if (!f) {
 
-		cout << "Cannot open the file!" << endl;
+		cout << "There is no transaction to show!" << endl;
 		
 	}
 
