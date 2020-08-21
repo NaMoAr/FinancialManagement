@@ -1,14 +1,11 @@
-#include "CheckingAccountProxy.h"
-#include "Account.h"
+#include "../header/CheckingAccountProxy.hpp"
+#include "../header/Account.hpp"
 #include<string>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 using namespace std;
 
-CheckingAccountProxy::CheckingAccountProxy()
-{
-}
 
 CheckingAccountProxy::CheckingAccountProxy(double initialBalance, int theUserID)
 {
@@ -26,7 +23,7 @@ stringstream* CheckingAccountProxy::deposit(double depMoney, stringstream* ss)
 {
 
 	balance = getBalance() + depMoney;
-	s << "Checking account, $" << depMoney << " has been deposited, " << "New Balance: $" << balance<< endl;
+	s << "Checking account, $" << depMoney << " has been deposited, " << "New Balance: $" << balance<<endl;
 	ss = &s;
 	cout << depMoney << " dollors has been deposited" << endl;
 	return ss;
@@ -53,7 +50,7 @@ stringstream* CheckingAccountProxy::withdraw(double withMoney, stringstream* ss)
 void CheckingAccountProxy::logOut(string depOrwith, double Money, stringstream* ss)
 {
 
-	if (depOrwith == "deposite") {
+	if (depOrwith == "deposit") {
 		ptr->deposit(Money, ss);
 	}
 	if (depOrwith == "withdraw") {
