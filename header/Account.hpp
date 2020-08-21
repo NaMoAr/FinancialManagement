@@ -9,8 +9,8 @@ class Account
 {
 protected:
 double balance = 0.0 ;
-string userID = "";
-		
+int userID = 0;
+string password = "";
 		
 
 public:

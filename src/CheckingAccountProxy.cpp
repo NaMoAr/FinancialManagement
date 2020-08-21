@@ -10,10 +10,10 @@ CheckingAccountProxy::CheckingAccountProxy()
 {
 }
 
-CheckingAccountProxy::CheckingAccountProxy(double initialBalance, string theUserID)
+CheckingAccountProxy::CheckingAccountProxy(double initialBalance, int theUserID)
 {
 	balance = initialBalance;
-	userID.assign(theUserID);
+	userID = theUserID;
 	ptr = new CheckingAccount(initialBalance, theUserID);
 }
 
