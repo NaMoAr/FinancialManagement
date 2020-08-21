@@ -1,7 +1,7 @@
 #ifndef CHECKINGACCOUNTPROXY_HPP
 #define CHECKINGACCOUNTPROXY_HPP
-#include "Account.h"
-#include "CheckingAccount.h"
+#include "Account.hpp"
+#include "CheckingAccount.hpp"
 
 class CheckingAccountProxy : public Account
 {
@@ -11,8 +11,8 @@ private:
 	stringstream s;
 
 public:
-	CheckingAccountProxy();
-	CheckingAccountProxy(double initialBalance, string userID);
+	
+	CheckingAccountProxy(double initialBalance, int userID);
 	~CheckingAccountProxy();
 
 	stringstream* deposit(double depMoney, stringstream* ss);
