@@ -59,7 +59,7 @@ UserInfo::~UserInfo() {
 	delete profile;
 }
 
-UserInfo::SaveInfo(Account* p) {
+void UserInfo::SaveInfo(Account* p) {
 	for (int i = 0; i < id.size(); ++i) {
 		if (id.at(i) == p->getID()) {
 			balance.at(i) = to_string(p->getBalance());

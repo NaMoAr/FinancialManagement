@@ -21,6 +21,8 @@ class UserInfo : public Account {
 		virtual void PrintList() {};
 		//updates all user info into UserInfo.txt when customer selects sign out
 
+		void SaveInfo(Account* p);
+
 	protected:
 		vector<string> acType;
 		vector<string> id;
