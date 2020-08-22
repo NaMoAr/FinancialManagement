@@ -22,9 +22,9 @@ class UserInfo : public Account {
 		//updates all user info into UserInfo.txt when customer selects sign out
 
 	protected:
+		vector<string> acType;
 		vector<string> id;
 		vector<string> pw;
-		vector<string> budget; //budget tool to prevent overspending
 		vector<string> balance; //current balance in account
 		vector<string> funds; //monthlyrent for checkings, stocks for savings
 };

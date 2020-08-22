@@ -7,10 +7,10 @@ void CSVSave::PrintList() {
 	}
 
 	for(int i = 0; i < id.size(); ++i) {
-		outFS << id.at(i) << "," 
+		outFS << acType.at(i) << ","
+		      << id.at(i) << "," 
 		      << pw.at(i) << "," 
-                      << balance.at(i) << "," 
-                      << budget.at(i) << "," 
+                      << balance.at(i) << ","  
                       << funds.at(i) << endl;
 	}
 

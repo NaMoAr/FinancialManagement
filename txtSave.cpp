@@ -10,8 +10,14 @@ void txtSave::PrintList() {
 		outFS << "User ID: " << id.at(i) << endl;
 		outFS << "Password: " << pw.at(i) << endl;
 		outFS << "Current Balance: " << balance.at(i) << endl;
-		outFS << "Max Budget: " << budget.at(i) << endl;
-		outFS << "Funds: " << funds.at(i) << endl;
+		
+		if(acType.at(i) == "s") {
+			outFS << "My Stock Price: " << funds.at(i) << endl;
+		}
+	
+		else if (acType.at(i) == "c") {
+			outFS << "My Monthly Home Rent: " << funds.at(i) << endl;
+		}
 		outFS << endl;
 	{
 
