@@ -4,8 +4,8 @@
 #include <sstream>
 #include "../header/CheckingAccount.hpp"
 #include "../header/Account.hpp"
-#include <ctime>
-#include <chrono>
+//#include <ctime>
+//#include <chrono>
 
 
 using namespace std;
@@ -17,48 +17,24 @@ CheckingAccount::CheckingAccount(double initialBalance, int theUserID)
 {
 	balance = initialBalance;
 	userID = theUserID;
-	
-	
 }
 
 CheckingAccount::~CheckingAccount()
 {
 }
 
-stringstream* CheckingAccount::deposit(double depMoney, stringstream* ss)
+void CheckingAccount::logOut(stringstream* ss)
 {
-                string id = to_string(userID);
-                string filename = id + ".txt";
-		std::fstream f;
-		f.open(filename, std::fstream::in | std::fstream::out | std::fstream::app);
-                f << ss->str();
-		f.close();
-	
-
-	
-	return nullptr;
-}
-
-stringstream* CheckingAccount::withdraw(double withMoney, stringstream* ss)
-{
-	
-	        string id = to_string(userID);
-		string filename = id + ".txt";
-		std::fstream f;
-		f.open(filename, std::fstream::in | std::fstream::out | std::fstream::app);
+	string id = to_string(userID);
+	string filename = id + ".txt";
+        std::fstream f;
+	f.open(filename,  std::fstream::in | std::fstream::out | std::fstream::app);
+	if (ss != nullptr) {
 		f << ss->str();
-		f.close();
-		return nullptr;
-    
+	}
+	f.close();
+	
 }
-
-void CheckingAccount::transfer(double tranMoney, string giverID, string recieverID)
-{
-
-}
-
-
-
 
 void CheckingAccount::accountHistory()
 {
