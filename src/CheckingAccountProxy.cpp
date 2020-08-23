@@ -63,21 +63,12 @@ stringstream* CheckingAccountProxy::withdraw(double withMoney, stringstream* ss)
 	
 
 
-void CheckingAccountProxy::logOut(string depOrwith, double Money, stringstream* ss)
+void CheckingAccountProxy::logOut(stringstream* ss)
 {
 
-	if (depOrwith == "deposit") {
-		ptr->deposit(Money, ss);
-	}
-	if (depOrwith == "withdraw") {
-		ptr->withdraw(Money, ss);
-	}
-
+	ptr->logOut(ss);
 }
 
-void CheckingAccountProxy::transfer(double tranMoney, string giverID, string recieverID)
-{
-}
 
 double CheckingAccountProxy::getBalance()
 {
