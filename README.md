@@ -21,7 +21,7 @@ The input of our application would be the user's information such as first and l
 The output of our application would be the account of the holder's balance, account history, profit for a customized period of time, a budget planning based on checking account's balance. 
 This Financial Management Application is intended to help users keep track of their money, be it in a checking or savings account. Upon logging in, existing users have the option to view their balnace, deposit or withdraw funds, and create a projected savings goal. New users will also have access to these options after creating an account. 
 
-Desgin Patterns:
+Design Patterns:
 
 Proxy Design Pattern: Used to minimize the amount of communication needed for the application to update account history. An ostream proxy will store information as needed and will update the history file when the user closes the program.
 
