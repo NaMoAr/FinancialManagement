@@ -4,8 +4,8 @@
 #include <sstream>
 #include "../header/SavingAccount.hpp"
 #include "../header/Account.hpp"
-#include <ctime>
-#include <chrono>
+//#include <ctime>
+//#include <chrono>
 
 
 using namespace std;
@@ -24,39 +24,18 @@ SavingAccount::~SavingAccount()
 {
 }
 
-stringstream* SavingAccount::deposit(double depMoney, stringstream* ss)
+void SavingAccount::logOut(stringstream* ss)
 {
 	string id = to_string(userID);
 	string filename = id + ".txt";
 	std::fstream f;
-	f.open(filename, std::fstream::in | std::fstream::out | std::fstream::app);
-	f << ss->str();
+	f.open(filename, std::fstream::in | std::fstream::out | std::fstream::app );
+	if (ss != nullptr) {
+		f << ss->str();
+	}
 	f.close();
-
-
-	return nullptr;
+	
 }
-
-stringstream* SavingAccount::withdraw(double withMoney, stringstream* ss)
-{
-
-	string id = to_string(userID);
-	string filename = id + ".txt";
-	std::fstream f;
-	f.open(filename,  std::fstream::in | std::fstream::out | std::fstream::app);
-	f << ss->str();
-	f.close();
-	return nullptr;
-
-}
-
-void SavingAccount::transfer(double tranMoney, string giverID, string recieverID)
-{
-
-}
-
-
-
 
 void SavingAccount::accountHistory()
 {
