@@ -29,6 +29,8 @@ This Financial Management Application is intended to help users keep track of th
 
 ![Singleton](https://github.com/dchan066-862012834/CS100_Final_Project/blob/main/OMT.PNG)
 
+![Strategy OMT](https://user-images.githubusercontent.com/56089475/90972595-4a0dc100-e4cf-11ea-981d-a69b218e6622.png)
+
  > ## Phase III
  > You will need to schedule two check-in's with the TA (during lab hours or office hours) where your entire group will meet with them and discuss:
  > * What you have each done up to this point
