@@ -5,6 +5,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <cmath>
+#include <cstdlib>
 using namespace std;
 
 
@@ -49,21 +51,11 @@ stringstream* SavingAccountProxy::withdraw(double withMoney, stringstream* ss)
 
 }
 
-void SavingAccountProxy::logOut(string depOrwith, double Money, stringstream* ss)
+void SavingAccountProxy::logOut(stringstream* ss)
 {
-
-	if (depOrwith == "deposit") {
-		ptr->deposit(Money, ss);
-	}
-	if (depOrwith == "withdraw") {
-		ptr->withdraw(Money, ss);
-	}
-
+    ptr->logOut(ss);
 }
 
-void SavingAccountProxy::transfer(double tranMoney, string giverID, string recieverID)
-{
-}
 
 double SavingAccountProxy::getBalance()
 {
@@ -79,3 +71,56 @@ void SavingAccountProxy::accountHistory()
 	ptr->accountHistory();
 }
 
+
+double SavingAccountProxy::fetchStockPrice() {
+	double sharePrice= double( rand() % 20) + 50;
+	return sharePrice;
+}
+
+void SavingAccountProxy::calculateProfit() {
+	cout<<"$"<< (stockNum * fetchStockPrice()) - (stockNum * stockPrice)<<endl;
+}
+
+void SavingAccountProxy::buyStock( ) {
+	
+	
+	stockPrice = fetchStockPrice();
+	cout << "The current stock share's price is $ " << stockPrice << endl;
+	cout << "Hom many stock shares would you like to but?" << endl;
+	cin >> stockNum;
+	if (stockNum * stockPrice > getBalance()) {
+		cout << "Sorry, there is not enough money in your account." << endl;
+	}
+	else {
+		withdraw(stockNum * stockPrice, nullptr);
+	}
+
+}
+
+double SavingAccountProxy::getStockNum() {
+	return stockNum;
+}
+
+double SavingAccountProxy::getStockPrice() {
+	return stockPrice;
+}
+
+void SavingAccountProxy::sellStock() {
+	int sellNum = 0;
+	stockPrice = fetchStockPrice();
+	cout << "The current stock share's price is $ " << stockPrice << endl;
+	cout << "How many stock shares would you like to sell?" << endl;
+	cin >> sellNum;
+	if (sellNum > stockNum) {
+		cout << "Sorry, you only have " << stockNum << " stock shares to sell" << endl;
+	}
+	else {
+		stockNum = stockNum - sellNum;
+		deposit(sellNum * stockPrice, nullptr);
+	}
+}
+
+void SavingAccountProxy::currentUserStock() {
+
+	cout << getStockNum() << " stock share/shares of $" << getStockPrice() << endl;
+}
