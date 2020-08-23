@@ -27,6 +27,8 @@ This Financial Management Application is intended to help users keep track of th
 
 ![FinalVersionOMT](https://user-images.githubusercontent.com/59351131/90815522-af02c480-e2df-11ea-977e-b885bd6c2b9f.png)
 
+![Proxy](https://user-images.githubusercontent.com/59351131/90973647-e092b000-e4d8-11ea-99f1-82cd959b2eaf.png)
+
 ![Singleton](https://github.com/dchan066-862012834/CS100_Final_Project/blob/main/OMT.PNG)
 
  > ## Phase III
