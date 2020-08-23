@@ -16,15 +16,10 @@ public:
 	~CheckingAccountProxy();
 
 	stringstream* deposit(double depMoney, stringstream* ss);
-    void logOut(string depOrwith, double Money, stringstream* ss);
-    stringstream* withdraw(double withMoney, stringstream* ss);
-    void transfer(double tranmoney, string giverID, string recieverID);
-    double getBalance();
-
-	
-
-	
-	void accountHistory();
+        void logOut(stringstream* ss);
+        stringstream* withdraw(double withMoney, stringstream* ss);
+        double getBalance();
+        void accountHistory();
         void setMonthlyHomeRent(double homeRent);
         double getMonthlyHomeRent();
 
