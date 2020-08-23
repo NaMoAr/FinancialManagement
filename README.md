@@ -27,7 +27,7 @@ This Financial Management Application is intended to help users keep track of th
 
 ![FinalVersionOMT](https://user-images.githubusercontent.com/59351131/90815522-af02c480-e2df-11ea-977e-b885bd6c2b9f.png)
 
-
+![Singleton](https://github.com/dchan066-862012834/CS100_Final_Project/blob/main/OMT.PNG)
 
  > ## Phase III
  > You will need to schedule two check-in's with the TA (during lab hours or office hours) where your entire group will meet with them and discuss:
@@ -35,7 +35,7 @@ This Financial Management Application is intended to help users keep track of th
  > * What you plan to do until the next meeting (or until the final demo)
  > * If there is anything that is getting in your way
  
- > You may notice that this is effectively a "standup" meeting. We suggest that as a team you have a daily (or every other day) standup, but this will be a bit more formal with the TA. 
+ > You may notice that this is effectively a "standup" meeting. We suggest that as a team you have a daily (or every other day) standup, but this will be a bit more formal with00 the TA. 
  
  > **Your meetings cannot be in the same week of the session so plan ahead**
 
