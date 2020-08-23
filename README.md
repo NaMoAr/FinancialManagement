@@ -23,11 +23,14 @@ This Financial Management Application is intended to help users keep track of th
 
 Design Patterns:
 
-Proxy Design Pattern: Used to minimize the amount of communication needed for the application to update account history. An ostream proxy will store information as needed and will update the history file when the user closes the program.
+Proxy Design Pattern: 
+Used to prevent many write operations to the file (since information on account history will be stored on text documents) we will use a proxy ostream to store all changes to the account history when the user is finished using the program.
 
-Singleton Design Pattern: Used to store accounts in a list that can be accessed by customers and changed by the administrators.
+Singleton Design Pattern:
+Used to ensure that only one list object is created. This is done to consolidate all users to one list and avoid the need to traverse multiple incomplete list objects.
 
-Strategy Design Pattern: Used to save the information of each account into a variety of files. One will be a .csv file that loads all account information into the program upon launch, and the other will be a .txt file written in a way that makes it easier for an administrator to read.
+Strategy Design Pattern: 
+Used to save the information of each account into a variety of files. One will be a .csv file that loads all account information into the program upon launch, and the other will be a .txt file written in a way that makes it easier for an administrator to read.
 
 ## Class Diagram
 
