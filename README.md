@@ -24,14 +24,13 @@ This Financial Management Application is intended to help users keep track of th
 Desgin Patterns:
 
 Proxy Design Pattern:
-As an administrator I want to minimize the amount of communication needed for the application to update account history information. (Use a ostream proxy to store information and update the history file when the user closes the program.)
+Information on account history will be stored on text documents, to prevent many write operations to the file we will use a proxy ostream to store all changes to the account history when the user is finished using the program.
 
 Singleton Design Pattern:
-to Store accounts in a list that can be accessed by users and changed by admins
+All accounts are to be stored together, in order to ensure this is the case we will utilize the singleton design pattern to create a list of all customers that is traversed for removal creation and access of accounts.
 
-Strategy Design Pattern:
-As an administrator I want to be able to save the customerList in a variety of formats. (to do this we can use the strategy design pattern to create the desired file output which would depend on what type of file constructed the list. This method would also be applied to the constructor who must be able to read the files to populate the list when it starts up.)
-
+Strategy Design Pattwrn:
+The customerList can exist in a variety of file formats, in order to read and save this variety of formats we can use a strategy object to determine which file type is present / desired and construct the correct output or read the input properly.
 ## Class Diagram
 
 ![FinalVersionOMT](https://user-images.githubusercontent.com/59351131/90815522-af02c480-e2df-11ea-977e-b885bd6c2b9f.png)
