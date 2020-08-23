@@ -11,10 +11,7 @@ public:
 	 
 	 CheckingAccount(double initialBalance, int userID);
 	 ~CheckingAccount();
-
-	 stringstream* deposit(double depMoney,stringstream* s);
-	 stringstream* withdraw(double depMoney, stringstream* s);
-	 void transfer(double tranmoney, string giverID, string recieverID);
+         void logOut(stringstream* ss);
          void accountHistory();
 	 
 
