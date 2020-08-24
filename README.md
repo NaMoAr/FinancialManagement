@@ -34,7 +34,7 @@ Used to save the information of each account into a variety of files. One will b
 
 ## Class Diagram
 
-![Final_OMT](https://user-images.githubusercontent.com/59351131/90973846-a75b3f80-e4da-11ea-9f76-e3519999a6f6.png)
+![Final_OMT](https://user-images.githubusercontent.com/59351131/91003027-0d9c9c80-e585-11ea-8b9b-b9840a225932.png)
 
 ![Proxy](https://user-images.githubusercontent.com/59351131/90973647-e092b000-e4d8-11ea-99f1-82cd959b2eaf.png)
 
