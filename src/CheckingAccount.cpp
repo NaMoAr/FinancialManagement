@@ -13,10 +13,12 @@ using namespace std;
 
 
 
-CheckingAccount::CheckingAccount(double initialBalance, int theUserID)
+CheckingAccount::CheckingAccount(double initialBalance, int theUserID, string pass, double homeRent)
 {
 	balance = initialBalance;
 	userID = theUserID;
+	password = pass;
+	monthlyHomeRent = homeRent;
 }
 
 CheckingAccount::~CheckingAccount()
@@ -66,8 +68,35 @@ void CheckingAccount::accountHistory()
 	}
 	
 	
-	
-
 }
 
+void CheckingAccount::setMonthlyHomeRent(double homeRent)
+{
+	monthlyHomeRent = homeRent;
+}
+
+double CheckingAccount::getMonthlyHomeRent()
+{
+	return monthlyHomeRent;
+}
+
+void CheckingAccount::setPassword(string pass)
+{
+	password = pass;
+}
+
+string CheckingAccount::getPassword()
+{
+	return password;
+}
+
+int CheckingAccount::getID()
+{
+	return userID;
+}
+
+double CheckingAccount::getBalance()
+{
+	return balance;
+}
 
