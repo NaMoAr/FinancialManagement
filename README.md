@@ -25,7 +25,7 @@ This Financial Management Application is intended to help users keep track of th
 
 ## Class Diagram
 
-![Final_OMT](https://user-images.githubusercontent.com/59351131/91002483-a6321d00-e583-11ea-849e-705cdf84b9e8.png)
+![Final_OMT](https://user-images.githubusercontent.com/59351131/91003027-0d9c9c80-e585-11ea-8b9b-b9840a225932.png)
 
 ![Proxy](https://user-images.githubusercontent.com/59351131/90973647-e092b000-e4d8-11ea-99f1-82cd959b2eaf.png)
 
