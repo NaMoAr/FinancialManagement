@@ -7,11 +7,13 @@
 using namespace std;
 
 
-CheckingAccountProxy::CheckingAccountProxy(double initialBalance, int theUserID)
+CheckingAccountProxy::CheckingAccountProxy(double initialBalance, int theUserID,string pass, double homeRent)
 {
 	balance = initialBalance;
 	userID = theUserID;
-	ptr = new CheckingAccount(initialBalance, theUserID);
+	password = pass;
+	monthlyHomeRent = homeRent;
+	ptr = new CheckingAccount(initialBalance, theUserID,pass, homeRent);
 }
 
 CheckingAccountProxy::~CheckingAccountProxy()
@@ -88,12 +90,26 @@ void CheckingAccountProxy::accountHistory()
 void CheckingAccountProxy::setMonthlyHomeRent(double homeRent)
 {
 	monthlyHomeRent = homeRent;
+	ptr->setMonthlyHomeRent(homeRent);
 }
 
 double CheckingAccountProxy::getMonthlyHomeRent()
 {
-	return monthlyHomeRent;
+	return ptr->getMonthlyHomeRent();
 }
 
 
+void CheckingAccountProxy::setPassword(string pass)
+{
+	ptr->setPassword(pass);
+}
 
+string CheckingAccountProxy::getPassword()
+{
+	return ptr->getPassword();
+}
+
+int CheckingAccountProxy::getID()
+{
+	return ptr->getID();
+}
