@@ -36,7 +36,7 @@ Used to save the information of each account into a variety of files. One will b
 
 ![Final_OMT](https://user-images.githubusercontent.com/59351131/91003615-ab449b80-e586-11ea-8983-2d9b9753acd3.png)
 
-![Proxy](https://user-images.githubusercontent.com/59351131/90973647-e092b000-e4d8-11ea-99f1-82cd959b2eaf.png)
+![Proxy](https://user-images.githubusercontent.com/59351131/91004549-58b8ae80-e589-11ea-92be-b2d25b0f8a33.png)
 
 ![Singleton](https://github.com/dchan066-862012834/CS100_Final_Project/blob/main/OMT.PNG)
 
