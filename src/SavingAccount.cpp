@@ -12,11 +12,13 @@ using namespace std;
 
 
 
-SavingAccount::SavingAccount(double initialBalance, int theUserID)
+SavingAccount::SavingAccount(double initialBalance, int theUserID,string pass, int stochShareNum, double stockSharePrice)
 {
 	balance = initialBalance;
 	userID = theUserID;
-
+	password = pass;
+	stockNum = stochShareNum;
+	stockPrice = stockSharePrice;
 
 }
 
@@ -65,8 +67,40 @@ void SavingAccount::accountHistory()
 
 		f.close();
 	}
+}
 
+void SavingAccount::setStockNum(int stockShareNum) {
+	stockNum = stockShareNum;
+}
 
+double SavingAccount::getStockNum() {
+	return stockNum;
+}
 
+void SavingAccount::setStockPrice(double stockSharePrice) {
+	stockPrice = stockSharePrice;
+}
 
+double SavingAccount::getStockPrice() {
+	return stockPrice;
+}
+
+void SavingAccount::setPassword(string pass)
+{
+	password = pass;
+}
+
+string SavingAccount::getPassword()
+{
+	return password;
+}
+
+int SavingAccount::getID()
+{
+	return userID;
+}
+
+double SavingAccount::getBalance()
+{
+	return balance;
 }
