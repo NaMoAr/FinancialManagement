@@ -13,21 +13,25 @@ private:
 	double stockPrice = 0.0;
 public:
 	
-	SavingAccountProxy(double initialBalance, int userID);
+	SavingAccountProxy(double initialBalance, int userID,string pass, int stochShareNum, double stockSharePrice);
 	~SavingAccountProxy();
 
 	stringstream* deposit(double depMoney, stringstream* ss);
-	void logOut(stringstream* ss);
 	stringstream* withdraw(double withMoney, stringstream* ss);
-        double getBalance();
+	void logOut(stringstream* ss);       
 	void accountHistory();
+	double getBalance();
+	void setPassword(string pass);
+	string getPassword();
+	int getID();
         double fetchStockPrice();
         void calculateProfit();
-        void buyStock();
-        double getStockNum();
-        double getStockPrice();
-        void sellStock();
-	void currentUserStock();
+	stringstream* buyStock();
+   	stringstream* sellStock();
+   	void setStockNum(int stockShareNum);
+   	double getStockNum();
+   	void setStockPrice(double stockSharePrice);
+   	double getStockPrice();
 
 };
 
