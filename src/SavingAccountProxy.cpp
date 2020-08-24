@@ -11,11 +11,14 @@ using namespace std;
 
 
 
-SavingAccountProxy::SavingAccountProxy(double initialBalance, int theUserID)
+SavingAccountProxy::SavingAccountProxy(double initialBalance, int theUserID,string pass, int stochShareNum, double stockSharePrice)
 {
 	balance = initialBalance;
 	userID = theUserID;
-	ptr = new SavingAccount(initialBalance, theUserID);
+	password = pass;
+	stockNum = stochShareNum;
+	stockPrice = stockSharePrice;
+	ptr = new SavingAccount(initialBalance, theUserID, pass, stochShareNum, stockSharePrice);
 }
 
 SavingAccountProxy::~SavingAccountProxy()
@@ -59,7 +62,7 @@ void SavingAccountProxy::logOut(stringstream* ss)
 
 double SavingAccountProxy::getBalance()
 {
-	return balance;
+	return ptr->getBalance();
 }
 
 
@@ -78,12 +81,12 @@ double SavingAccountProxy::fetchStockPrice() {
 }
 
 void SavingAccountProxy::calculateProfit() {
-	cout<<"$"<< (stockNum * fetchStockPrice()) - (stockNum * stockPrice)<<endl;
+	cout<<"$"<< (getStockNum() * fetchStockPrice()) - (getStockNum() * getStockPrice())<<endl;
 }
 
-void SavingAccountProxy::buyStock( ) {
+stringstream* SavingAccountProxy::buyStock( ) {
 	
-	
+	stringstream* ss = nullptr;
 	stockPrice = fetchStockPrice();
 	cout << "The current stock share's price is $ " << stockPrice << endl;
 	cout << "Hom many stock shares would you like to but?" << endl;
@@ -92,20 +95,16 @@ void SavingAccountProxy::buyStock( ) {
 		cout << "Sorry, there is not enough money in your account." << endl;
 	}
 	else {
-		withdraw(stockNum * stockPrice, nullptr);
+		ss = withdraw(stockNum * stockPrice, nullptr);
+		setStockNum(getStockNum() + stockNum);
+		setStockPrice((getStockPrice() + stockPrice)/2);
 	}
-
+	return ss;
 }
 
-double SavingAccountProxy::getStockNum() {
-	return stockNum;
-}
 
-double SavingAccountProxy::getStockPrice() {
-	return stockPrice;
-}
-
-void SavingAccountProxy::sellStock() {
+stringstream* SavingAccountProxy::sellStock() {
+	stringstream* ss = nullptr;
 	int sellNum = 0;
 	stockPrice = fetchStockPrice();
 	cout << "The current stock share's price is $ " << stockPrice << endl;
@@ -117,10 +116,42 @@ void SavingAccountProxy::sellStock() {
 	else {
 		stockNum = stockNum - sellNum;
 		deposit(sellNum * stockPrice, nullptr);
+		setStockNum(getStockNum() - sellNum);
 	}
+	return ss;
 }
 
-void SavingAccountProxy::currentUserStock() {
-
-	cout << getStockNum() << " stock share/shares of $" << getStockPrice() << endl;
+void SavingAccountProxy::setStockNum(int stockShareNum) {
+	ptr->setStockNum(stockShareNum);
 }
+
+double SavingAccountProxy::getStockNum() {
+	return ptr->getStockNum();
+}
+
+void SavingAccountProxy::setStockPrice(double stockSharePrice) {
+	ptr->setStockPrice(stockSharePrice);
+}
+
+double SavingAccountProxy::getStockPrice() {
+	return ptr->getStockPrice();
+}
+
+
+void SavingAccountProxy::setPassword(string pass)
+{
+	ptr->setPassword(pass);
+}
+
+string SavingAccountProxy::getPassword()
+{
+	return ptr->getPassword();
+}
+
+int SavingAccountProxy::getID()
+{
+	return ptr->getID();
+}
+
+
+
