@@ -10,15 +10,13 @@ using namespace std;
 
 class UserInfo {
 	public:
-		UserInfo(); //constructor that reads in UserInfo.txt and loads all user info on list
+		UserInfo(); //constructor 
 		
 		~UserInfo(); //destructor
 
 		void SaveInfo(int ID, string pass, double b, double f); //called by Account() upon signing out to save new changes
 
 		vector<vector<string>> ReadList(); //called by AccountList to pass over all info read in from list
-
-		vector<vector<string>> v; //variable for ReadList()
 
 
 	protected:
