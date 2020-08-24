@@ -6,15 +6,20 @@ using namespace std;
 class CheckingAccount : public Account
 {
 
-
+private:
+	double monthlyHomeRent;
 public:
 	 
-	 CheckingAccount(double initialBalance, int userID);
-	 ~CheckingAccount();
-         void logOut(stringstream* ss);
-         void accountHistory();
-	 
-
+	CheckingAccount(double initialBalance, int userID, string pass, double homeRent);
+	~CheckingAccount();	
+	void logOut(stringstream* ss);
+        void accountHistory();
+	double getBalance();
+        void setPassword(string pass);
+	string getPassword();
+	int getID();
+	void setMonthlyHomeRent(double homeRent);
+	double getMonthlyHomeRent();
 };
 
 #endif // CHECKINGACCOUNT_HPP
