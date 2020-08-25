@@ -33,6 +33,7 @@ stringstream* SavingAccountProxy::deposit(double depMoney, stringstream* ss)
 	s << "Saving account, $" << depMoney << " has been deposited, " << "New Balance: $" << balance << endl;
 	ss = &s;
 	cout << depMoney << " dollors has been deposited" << endl;
+	setBalance(balance);
 	return ss;
 
 }
@@ -49,8 +50,9 @@ stringstream* SavingAccountProxy::withdraw(double withMoney, stringstream* ss)
 		s << "Saving account, $" << withMoney << " has been withdrawn, " << "New Balance: $" << balance << endl;
 		ss = &s;
 		cout << withMoney << " dollors has been withdrawn" << endl;
-		return ss;
-	}
+		setBalance(balance);
+		return ss;	
+                }
 
 }
 
@@ -59,6 +61,9 @@ void SavingAccountProxy::logOut(stringstream* ss)
     ptr->logOut(ss);
 }
 
+void SavingAccountProxy::setBalance(double bl) {
+	ptr->setBalance(bl);
+}
 
 double SavingAccountProxy::getBalance()
 {
@@ -69,9 +74,9 @@ double SavingAccountProxy::getBalance()
 
 
 
-void SavingAccountProxy::accountHistory()
+bool SavingAccountProxy::accountHistory()
 {
-	ptr->accountHistory();
+	return ptr->accountHistory();
 }
 
 
@@ -80,8 +85,8 @@ double SavingAccountProxy::fetchStockPrice() {
 	return sharePrice;
 }
 
-void SavingAccountProxy::calculateProfit() {
-	cout<<"$"<< (getStockNum() * fetchStockPrice()) - (getStockNum() * getStockPrice())<<endl;
+double SavingAccountProxy::calculateProfit() {
+	return (getStockNum() * fetchStockPrice()) - (getStockNum() * getStockPrice());
 }
 
 stringstream* SavingAccountProxy::buyStock( ) {
