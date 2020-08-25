@@ -11,14 +11,15 @@ private:
 	stringstream s;
         double monthlyHomeRent = 0.0; 
 public:
-	
+        CheckingAccountProxy(){};
 	CheckingAccountProxy(double initialBalance, int userID, string pass, double homeRent);
 	~CheckingAccountProxy();
 
 	stringstream* deposit(double depMoney, stringstream* ss);
         stringstream* withdraw(double withMoney, stringstream* ss);
 	void logOut(stringstream* ss);
-        void accountHistory();
+        bool accountHistory();
+	void setBalance(double bl);
 	double getBalance();
 	void setPassword(string pass);
 	string getPassword();
