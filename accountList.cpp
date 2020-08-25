@@ -3,18 +3,20 @@
 
 // TODO: verify the function and implementation of utilized unordered_map functions associated to the object "list"
 
-AccountList::AccountList () {
+AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database 
 // call Chloe's class to read the database file
-auto v = object->ReadList(); //TODO: we still need the name of chloe's userifo object
+objects.pushback(Object1);
+objects.pushback(Object2); // NOTE: whenever a new file save type is added it must be included in the constructor and as a pushback here
+auto v = object1->ReadList();
 
 	for (int i = 0, i < v.size(); i++){
-		if (v[i][0] == "s"){ // this implementation of element access for a vecotr of vecotrs of strings may need review
-			Account* temp = new SavingAccountProxy(v[i][3], v[i][1], v[i][2], v[i][4], 0);	
-			list.insert(v[i][1],temp);
+		mf (v[i][0] == "s"){ // this implementation of element access for a vecotr of vecotrs of strings may need review
+			Account* temp = new SavingAccountProxy(std::stod(v[i][3]), std::stoi(v[i][1]), v[i][2],std::stoi(v[i][4]),std::stod(v[i][5]));//(balance int, ID int, string password, stock quant, stock price?)
+			database.insert(std::stoi(v[i][1]),temp);
 		}
 		else {
-			Account* Temp = new CheckingAccountProxy(v[i][3], v[i][1], v[i][2], v[i][4]);
-			list.insert(v[i][1],Temp);
+			Account* Temp = new CheckingAccountProxy(std::stod(v[i][3]), std::stoi(v[i][1]), v[i][2], std::stod(v[i][4])); //double balance, int id, string pass, double rent
+			database.insert(std::stoi(v[i][1]),Temp);
 		}
 	}
 }
@@ -24,42 +26,42 @@ AccountList::~AccountList() {
 
 
 // delete all pointers in the hash map
-	for (auto x : list) {
-		if (typeid(x.second).name() == CheckingAccountProxy*)
-			object->saveinfo(c,x.second->getID(), x.second->getPassword(), x.second->getBalance, x.second->getMonthlyHomeRent() ); //TODO: figure out the name of chloe's userinfo object
-		if (typeid(x.second).name() == SavingAccountProxy*)
-			object->saveinfo(c,x.second->getID(), x.second->getPassword(), x.second->getBalance, x.second->getStockNum() );
-		delete x.second();
-	} //once objects in memory are deleted we can close the program
+	for (auto OBJECT : objects){
+		for (auto x : list) {
+			if (typeid(x.second).name() == CheckingAccountProxy*)
+				OBJECT->saveinfo(c,x.second->getID(), x.second->getPassword(), x.second->getBalance, x.second->getMonthlyHomeRent(),x.second->getStockPrice() ); 
+			if (typeid(x.second).name() == SavingAccountProxy*)
+				OBJECT->saveinfo(s,x.second->getID(), x.second->getPassword(), x.second->getBalance, x.second->getStockNum() );
+			delete x.second();
+		} //once objects in memory are deleted we can close the program
+	} // repeat for each type of save file
 delete this; // this might be overkill or could somehow break the program? not realy sure
 }
 
 
-AccountList* AccountList::GetInstance() {
+AccountList* AccountList::GetInstance(UserInfo* one, UserInfo* two) {
 // check to see if an accountlist exists, if so return it
+if (AccountList_ != NULL) return AccountList_;
+else { AccountList_ = new AccountList(one,two); return AccountList_; }
 // if it doesnt exist create the object by calling the constructor
 // return the pointer of the object you just created
 }
 
 void interface() {
-	char temp = 4;
+	char temp = '4';
 	std::cout << "Welcome to the financial planning and stock management account access tool" << endl << "to access administrator functions enter '0', to log in to a user account enter '2' to quit the program enter '3' " << endl;
-	if (temp == 1) 	adminMenu();
-	if (temp == 2)	login();
-	if (temp != 3)	interface();
+	std::cin >> temp;
+	if (temp == '1')adminMenu();
+	if (temp == '2')login();
+	if (temp != '3')interface();
 	// final saves to the file calling chloes stuff?
 	return;
 	
 }
 
 void AccountList::createAccount () {
-	std::string temp = "";
 	std::string pass = "";
 	int value;
-	// verify admin status with an admin password
-	std::cout << "Verify administrator status" << endl;
-	std::cin >> temp;
-	if (temp != AdminAccess) {cout << "Verification failed, terminating operation"<<endl; return;}
 	// request new password
 	std::cout << "Assign a password"<<endl;
 	std::cin >> pass;
@@ -84,28 +86,23 @@ void AccountList::createAccount () {
 	if (flag = 'c') {
 		// construct and store a checking account object
 		Account* toAdd = new CheckingAccountProxy(value,ID,pass,0,0);
-		list.insert(ID, toAdd);
+		database.insert(ID, toAdd);
 		return;
 	}
 	// construct and store a saving account object
 	Account* toadd = new SavingAccountProxy(value,ID,pass,0);
-	list.insert(ID, toadd);
+	database.insert(ID, toadd);
 	return;
 }
 
 void AccountList::deleteAccount () {
-	Account* toRemove;
-	int temp = ""
-	// verify admin status with an admin password
-	std::cout << "Verify administrator status" << endl;
-	std::cin >> temp;
-	if (temp != AdminAccess) {cout << "Verification failed, terminating operation"<<endl; return;}	
+	Account* toRemove;	
 	// search for id, report an error if it doesn't exist 
 	std::cout << "specify account ID to remove" << endl;
 	cin >> temp;
 	toRemove = traverseDatabase();
 	if (toRemove == NULL) {std::cout<< "account not found, terminationg operation" << endl; return;}
-	list.erase(ID); 
+	database.erase(ID); 
 	delete toRemove; // may be an incorrect deletion type
 	return;
 	// delete the object and set the pointer to null
@@ -115,7 +112,7 @@ void AccountList::deleteAccount () {
 Account* AccountList::traverseDatabase (int ID) {  // Final implementation will return an account*
 	Account* temp = NULL;
 	// this function searches the database for a given id returning it
-	temp = list.find(ID);
+	temp = databasre.find(ID); 
 	// if none exists it will return NULL
 	return temp;
 }
@@ -123,32 +120,41 @@ Account* AccountList::traverseDatabase (int ID) {  // Final implementation will 
 void AccountList::logIn() {
 	int ID = 0;
 	string pass = "";
-	// prompt ID & Password
+	// prompt ID
 	std::cout << "Enter ID" << endl;
 	std:: cin >> ID;
 	// scan list for ID returning null on a fail to find and print "account not found"
 	userPointer = traverseDatabase(ID);
 	// compare Password returning the account pointer on a match and null on a mismatch, in the fail case print "password incorrect" 
 	if (userPointer == NULL) {std::cout<<"account not found, terminating"; return;}
+	// prompt  Password
+	std::cout << "Enter Password" << endl;
+	std::cin >> pass;
 	if (userPointer->getPassword() != pass) {std::cout << "password invalid, terminating"; return;}
 	userPointer->Menu(); // this function call will depend on the way Najmeh implements her menu
 }
 
 void adminMenu() {
-char temp
-std::cout << "1 to remove an account. 2 to create an account, any other character to exit admin"<< endl;
-cin >> temp;
-if (temp == '1') deleteAccount();
-if (temp == '2') createAccount();
-return;
+	
+	int Temp = "";
+	// verify admin status with an admin password
+	std::cout << "Verify administrator status" << endl;
+	std::cin >> Temp;
+	if (Temp != AdminAccess) {cout << "Verification failed, terminating operation"<<endl; return;}		
+	char temp;
+	std::cout << "1 to remove an account. 2 to create an account, any other character to exit admin"<< endl;
+	cin >> temp;
+	if (temp == '1') deleteAccount();
+	if (temp == '2') createAccount();
+	return;
 
 }
 
 void AccountList::logOut() {
-// is called by account history proxy logout function
-// unset user pointer
-userPointer = NULL;
-// re call the log in prompt
-logIn();  
+	// is called by account history proxy logout function
+	// unset user pointer
+	userPointer = NULL;
+	// re call the log in prompt
+	Interface(); // TODO: verify the function of the interface and how we should return to it after we finish loggiing out  
 }
 
