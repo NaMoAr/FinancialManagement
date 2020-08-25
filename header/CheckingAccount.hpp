@@ -13,7 +13,8 @@ public:
 	CheckingAccount(double initialBalance, int userID, string pass, double homeRent);
 	~CheckingAccount();	
 	void logOut(stringstream* ss);
-        void accountHistory();
+        bool accountHistory();
+	void setBalance(double bl);
 	double getBalance();
         void setPassword(string pass);
 	string getPassword();
