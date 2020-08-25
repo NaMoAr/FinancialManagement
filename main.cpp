@@ -11,8 +11,8 @@
 int main() {
 
 	// make the userinfo objects
-	readerOne* = new txtSave();
-	readerTwo* = new csvSave();
+	readerOne* =  new txtSave();
+	readerTwo* =  new csvSave();
 
 	// make the list with userinfo objects as parametsrs
 	AccountList* DATABASE = new AccountList(readerOne,readerTwo); 
