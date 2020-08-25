@@ -16,7 +16,8 @@ public:
 	SavingAccount(double initialBalance, int userID,string pass, int stochShareNum, double stockSharePrice);
 	~SavingAccount();
         void logOut(stringstream* ss);
-	void accountHistory();
+	bool accountHistory();
+	void setBalance(double bl);
 	double getBalance();
 	void setPassword(string pass);
 	string getPassword();
