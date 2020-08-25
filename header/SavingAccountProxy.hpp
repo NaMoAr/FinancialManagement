@@ -19,13 +19,14 @@ public:
 	stringstream* deposit(double depMoney, stringstream* ss);
 	stringstream* withdraw(double withMoney, stringstream* ss);
 	void logOut(stringstream* ss);       
-	void accountHistory();
+	bool accountHistory();
+	void setBalance(double bl);
 	double getBalance();
 	void setPassword(string pass);
 	string getPassword();
 	int getID();
         double fetchStockPrice();
-        void calculateProfit();
+        double calculateProfit();
 	stringstream* buyStock();
    	stringstream* sellStock();
    	void setStockNum(int stockShareNum);
