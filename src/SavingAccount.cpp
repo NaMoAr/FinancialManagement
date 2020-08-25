@@ -4,8 +4,6 @@
 #include <sstream>
 #include "../header/SavingAccount.hpp"
 #include "../header/Account.hpp"
-//#include <ctime>
-//#include <chrono>
 
 
 using namespace std;
@@ -39,7 +37,7 @@ void SavingAccount::logOut(stringstream* ss)
 	
 }
 
-void SavingAccount::accountHistory()
+bool SavingAccount::accountHistory()
 {
 	cout << "Today's transactions would appear in the account history the next day after the bank approval." << endl;
 
@@ -50,7 +48,7 @@ void SavingAccount::accountHistory()
 	if (!f) {
 
 		cout << "There is no transaction to show!" << endl;
-
+                return false;
 	}
 
 
@@ -66,6 +64,7 @@ void SavingAccount::accountHistory()
 		}
 
 		f.close();
+                return true;
 	}
 }
 
@@ -98,6 +97,11 @@ string SavingAccount::getPassword()
 int SavingAccount::getID()
 {
 	return userID;
+}
+
+void SavingAccount::setBalance(double bl)
+{
+	balance = bl;
 }
 
 double SavingAccount::getBalance()
