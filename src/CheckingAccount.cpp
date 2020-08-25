@@ -38,7 +38,7 @@ void CheckingAccount::logOut(stringstream* ss)
 	
 }
 
-void CheckingAccount::accountHistory()
+bool CheckingAccount::accountHistory()
 {
 	cout << "Today's transactions would appear in the account history the next day after the bank approval."<< endl;
 	
@@ -49,7 +49,7 @@ void CheckingAccount::accountHistory()
 	if (!f) {
 
 		cout << "There is no transaction to show!" << endl;
-		
+		return false;
 	}
 
 
@@ -65,6 +65,7 @@ void CheckingAccount::accountHistory()
 		}
 
 		f.close();
+		return true;
 	}
 	
 	
@@ -99,4 +100,7 @@ double CheckingAccount::getBalance()
 {
 	return balance;
 }
-
+void CheckingAccount::setBalance(double bl)
+{
+	balance = bl;
+}
