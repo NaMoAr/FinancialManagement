@@ -28,6 +28,7 @@ stringstream* CheckingAccountProxy::deposit(double depMoney, stringstream* ss)
 	s << "Checking account, $" << depMoney << " has been deposited, " << "New Balance: $" << balance<<endl;
 	ss = &s;
 	cout << depMoney << " dollors has been deposited" << endl;
+	setBalance(balance);
 	return ss;
 	
 }
@@ -59,7 +60,8 @@ stringstream* CheckingAccountProxy::withdraw(double withMoney, stringstream* ss)
 		s << "Checking account, $" << withMoney << " has been withdrawn, " << "New Balance: $" << balance << endl;
 		ss = &s;
 		cout << withMoney << " dollors has been withdrawn" << endl;
-		return ss;
+		setBalance(balance);
+		                                                                            return ss;
 	}
 }
 	
@@ -71,19 +73,27 @@ void CheckingAccountProxy::logOut(stringstream* ss)
 	ptr->logOut(ss);
 }
 
+int CheckingAccountProxy::getID()
+{
+	return ptr->getID();
+}
+
+void CheckingAccountProxy::setBalance(double bl) {
+	ptr->setBalance(bl);
+}
 
 double CheckingAccountProxy::getBalance()
 {
-	return balance;
+	return ptr->getBalance();
 }
 
 
 
 
 
-void CheckingAccountProxy::accountHistory()
+bool CheckingAccountProxy::accountHistory()
 {
-	ptr->accountHistory();
+	return ptr->accountHistory();
 }
 
 
@@ -109,7 +119,3 @@ string CheckingAccountProxy::getPassword()
 	return ptr->getPassword();
 }
 
-int CheckingAccountProxy::getID()
-{
-	return ptr->getID();
-}
