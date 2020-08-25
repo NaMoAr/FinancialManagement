@@ -4,23 +4,25 @@
 #include <unordered_map>
 #include <string>
 #include <iostream>
+#include "UserInfoDummy.hpp"
+#include "AccountDummy.hpp"
 
+using namespace std;
 class AccountList {
 
 	private: 
 		
 		static AccountList* AccountList_; // we hold the pointer to the object
 
-		AccountList(UserInfo*,UserInfo*); // must be private so we control the instantiation of new objects of this type to maintain the singleton design pattern
+		AccountList(UserInfoDummy* readerOne,UserInfoDummy* readerTwo); // must be private so we control the instantiation of new objects of this type to maintain the singleton design pattern
 		
 		~AccountList(); // kept private to ensure that the object is only destroyed on shut down
 
-		unordered_map<int,Account*> database = new unordered_map<int,Account*>; // this is our "data" the object stores
+		unordered_map<int,AccountDummy*>* database; // this is our "data" the object stores
 	
-		Account* userPointer = NULL; // this pointer holds the account we are logged into, this is useful when saving individual account data.
+		AccountDummy* userPointer = NULL; // this pointer holds the account we are logged into, this is useful when saving individual account data.
 	
-		vector<UserInfo*> objects; // a vector that holds pointers to objects that save the database in different filetypes, to be populated in .cpp
-		
+		vector<UserInfoDummy*> objects; // a vector that holds pointers to objects that save the database in different filetypes, to be populated in .cpp
 
 		std::string adminAccess = "96a~eU=tWyVkz'4V"; // a randomly generated 16 character password to verify an admin before allowing access to admin functions TODO: !!BEYOND THE SCOPE OF THIS VERSION OF THE PROJECT!! use a tool to periodicall generate a new admin access code which is available only to the administrator.
 
@@ -36,9 +38,9 @@ class AccountList {
 	
 	public:
 
-		AccountList(AccountList &other) = delete// we can't let the object be copyable							MUST BE PUBLIC
+		AccountList(AccountList &other) = delete;// we can't let the object be copyable							MUST BE PUBLIC
 
-		void operator= (const AccountList &) = delete // we con't let the object be assignable						MUST BE PUBLIC
+		void operator= (const AccountList &) = delete; // we con't let the object be assignable						MUST BE PUBLIC
 	
 		AccountList* GetInstance(); // the public interface which manages the creation of the AccountList object			MUST BE PUBLIC
 

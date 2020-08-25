@@ -1,21 +1,25 @@
 #include "AccountList.hpp"
 #include <typeinfo>
-
+#include <vector>
 // TODO: verify the function and implementation of utilized unordered_map functions associated to the object "list"
 
-AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database 
+//WARNING: altering pointers to accept dummy pointers for testing WARNING!
+
+AccountList::AccountList (UserInfoDummy* object1, UserInfoDummy* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database 
 // call Chloe's class to read the database file
 objects.pushback(Object1);
 objects.pushback(Object2); // NOTE: whenever a new file save type is added it must be included in the constructor and as a pushback here
 auto v = object1->ReadList();
 
 	for (int i = 0, i < v.size(); i++){
-		mf (v[i][0] == "s"){ // this implementation of element access for a vecotr of vecotrs of strings may need review
-			Account* temp = new SavingAccountProxy(std::stod(v[i][3]), std::stoi(v[i][1]), v[i][2],std::stoi(v[i][4]),std::stod(v[i][5]));//(balance int, ID int, string password, stock quant, stock price?)
+		if (v[i][0] == "s"){ // this implementation of element access for a vecotr of vecotrs of strings may need review
+			AccountDummy temp = new AccountDummy(std::stod(v[i][3]), std::stoi(v[i][1]), v[i][2],std::stoi(v[i][4]),std::stod(v[i][5]))
+			//Account* temp = new SavingAccountProxy(std::stod(v[i][3]), std::stoi(v[i][1]), v[i][2],std::stoi(v[i][4]),std::stod(v[i][5]));//(balance int, ID int, string password, stock quant, stock price?)
 			database.insert(std::stoi(v[i][1]),temp);
 		}
 		else {
-			Account* Temp = new CheckingAccountProxy(std::stod(v[i][3]), std::stoi(v[i][1]), v[i][2], std::stod(v[i][4])); //double balance, int id, string pass, double rent
+			AccountDummy* Temp = new AccountDummy(std::stod(v[i][3]), std::stoi(v[i][1]), v[i][2], std::stod(v[i][4])); 
+			//Account* Temp = new CheckingAccountProxy(std::stod(v[i][3]), std::stoi(v[i][1]), v[i][2], std::stod(v[i][4])); //double balance, int id, string pass, double rent
 			database.insert(std::stoi(v[i][1]),Temp);
 		}
 	}
@@ -28,9 +32,9 @@ AccountList::~AccountList() {
 // delete all pointers in the hash map
 	for (auto OBJECT : objects){
 		for (auto x : list) {
-			if (typeid(x.second).name() == CheckingAccountProxy*)
-				OBJECT->saveinfo(c,x.second->getID(), x.second->getPassword(), x.second->getBalance, x.second->getMonthlyHomeRent(),x.second->getStockPrice() ); 
-			if (typeid(x.second).name() == SavingAccountProxy*)
+		//	if (typeid(x.second).name() == CheckingAccountProxy*)
+		//		OBJECT->saveinfo(c,x.second->getID(), x.second->getPassword(), x.second->getBalance, x.second->getMonthlyHomeRent(),x.second->getStockPrice() ); 
+		//	if (typeid(x.second).name() == SavingAccountProxy*)		NOTE: testing can't support this request at this time, we'll fo it later
 				OBJECT->saveinfo(s,x.second->getID(), x.second->getPassword(), x.second->getBalance, x.second->getStockNum() );
 			delete x.second();
 		} //once objects in memory are deleted we can close the program
@@ -85,12 +89,14 @@ void AccountList::createAccount () {
 	}
 	if (flag = 'c') {
 		// construct and store a checking account object
-		Account* toAdd = new CheckingAccountProxy(value,ID,pass,0,0);
+		AccountDummy toAdd = new AccountDummy(value,ID,pass,0,0);
+		//Account* toAdd = new CheckingAccountProxy(value,ID,pass,0,0);
 		database.insert(ID, toAdd);
 		return;
 	}
 	// construct and store a saving account object
-	Account* toadd = new SavingAccountProxy(value,ID,pass,0);
+	AccountDummy* toadd = new AccountDummy(value,ID,pass,0);
+	//Account* toadd = new SavingAccountProxy(value,ID,pass,0);
 	database.insert(ID, toadd);
 	return;
 }

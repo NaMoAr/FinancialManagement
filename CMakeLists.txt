@@ -1,4 +1,4 @@
-MAKE_MINIMUM_REQUIRED(VERSION 2.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
 ADD_SUBDIRECTORY(googletest)
 
@@ -8,7 +8,7 @@ ADD_EXECUTABLE(test
 	accountList.hpp
 	AccountDummy.hpp
 	UserInfoDummy.hpp
-	tests.cpp
+	Test.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest)
