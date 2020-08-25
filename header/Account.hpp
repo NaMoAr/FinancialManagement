@@ -16,8 +16,9 @@ string password = "";
 public:
  Account() {};
  virtual ~Account() {};
- virtual void accountHistory() = 0;
+ virtual bool accountHistory() = 0;
  virtual void logOut(stringstream* ss) = 0;
+ virtual void setBalance(double bl) = 0;
  virtual double getBalance() = 0;
  virtual void setPassword(string pass) = 0;
  virtual string getPassword() = 0 ;
