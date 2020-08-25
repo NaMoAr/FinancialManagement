@@ -15,7 +15,12 @@ ADD_EXECUTABLE(demo
 
 
  ADD_EXECUTABLE(test
-           test.cpp
+        test.cpp
+        src/CheckingAccount.cpp
+        src/CheckingAccountProxy.cpp
+        src/SavingAccount.cpp
+        src/SavingAccountProxy.cpp
+
 )
 
 TARGET_LINK_LIBRARIES(test gtest)
