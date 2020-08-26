@@ -26,9 +26,9 @@ SavingAccountProxy::~SavingAccountProxy()
 
 }
 
-stringstream* SavingAccountProxy::deposit(double depMoney, stringstream* ss)
+stringstream* SavingAccountProxy::deposit(double depMoney)
 {
-
+	stringstream* ss;
 	balance = getBalance() + depMoney;
 	s << "Saving account, $" << depMoney << " has been deposited, " << "New Balance: $" << balance << endl;
 	ss = &s;
@@ -40,11 +40,14 @@ stringstream* SavingAccountProxy::deposit(double depMoney, stringstream* ss)
 
 
 
-stringstream* SavingAccountProxy::withdraw(double withMoney, stringstream* ss)
+stringstream* SavingAccountProxy::withdraw(double withMoney)
 {
+	stringstream* ss;
 	balance = getBalance() - withMoney;
 	if (withMoney > balance) {
 		cout << "Sorry, this amount of money is over your balance." << endl;
+		ss = nullptr;
+		return ss;
 	}
 	else {
 		s << "Saving account, $" << withMoney << " has been withdrawn, " << "New Balance: $" << balance << endl;
@@ -100,7 +103,7 @@ stringstream* SavingAccountProxy::buyStock( ) {
 		cout << "Sorry, there is not enough money in your account." << endl;
 	}
 	else {
-		ss = withdraw(stockNum * stockPrice, nullptr);
+		ss = withdraw(stockNum * stockPrice);
 		setStockNum(getStockNum() + stockNum);
 		setStockPrice((getStockPrice() + stockPrice)/2);
 	}
@@ -120,7 +123,7 @@ stringstream* SavingAccountProxy::sellStock() {
 	}
 	else {
 		stockNum = stockNum - sellNum;
-		deposit(sellNum * stockPrice, nullptr);
+		deposit(sellNum * stockPrice);
 		setStockNum(getStockNum() - sellNum);
 	}
 	return ss;
