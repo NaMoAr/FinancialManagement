@@ -22,8 +22,8 @@ public:
 	SavingAccountProxy(double initialBalance, int userID,string pass, int stochShareNum, double stockSharePrice);
 	~SavingAccountProxy();
 
-	stringstream* deposit(double depMoney, stringstream* ss);
-	stringstream* withdraw(double withMoney, stringstream* ss);
+	stringstream* deposit(double depMoney);
+	stringstream* withdraw(double withMoney);
 	void logOut(stringstream* ss);       
 	bool accountHistory();
 	void setBalance(double bl);
