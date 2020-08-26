@@ -54,14 +54,14 @@ int main(){
             if (option == "2") {
                 cout << "How much do you want to deposit?" << endl;
                 cin >> dep;
-                ss = user1_s.deposit(dep, nullptr);
+                ss = user1_s.deposit(dep);
 
             }
             if (option == "3") {
                 cout << "How much do you want to withdraw?" << endl;
 
                 cin >> with;
-                ss = user1_s.withdraw(with, nullptr);
+                ss = user1_s.withdraw(with);
 
 
             }
@@ -72,7 +72,7 @@ int main(){
                 cout << user1_s.getStockNum() << " stock share/shares of $" << user1_s.getStockPrice() << endl;
             }
             if (option == "6") {
-                user1_s.calculateProfit();
+		 cout << "$" << user1_s.calculateProfit() << endl;
             }
             if (option == "7") {
                 ss = user1_s.sellStock();
@@ -118,12 +118,12 @@ int main(){
               if (option == "2") {
               cout << "How much do you want to deposit?" << endl;
               cin >> dep;
-              ss = user1_c.deposit(dep, nullptr);
+              ss = user1_c.deposit(dep);
               }
               if (option == "3") {
                   cout << "How much do you want to withdraw?" << endl;
                   cin >> with;
-                  ss = user1_c.withdraw(with, nullptr);
+                  ss = user1_c.withdraw(with);
               }
               if (option == "4") {
                    user1_c.accountHistory();
