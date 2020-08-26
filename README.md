@@ -40,7 +40,7 @@ Used to save the information of each account into a variety of files. One will b
 
 ![Singleton](https://github.com/dchan066-862012834/CS100_Final_Project/blob/main/UML3.PNG)
 
-![Strategy OMT](https://user-images.githubusercontent.com/56089475/90987848-005ebe00-e543-11ea-973d-72307a25cc0f.png)
+![Strategy OMT](https://user-images.githubusercontent.com/56089475/91352162-4b284200-e79e-11ea-80e9-58e31366742f.png)
 
  
  > ## Final deliverable
