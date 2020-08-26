@@ -8,7 +8,16 @@ ADD_EXECUTABLE(test
 	accountList.hpp
 	AccountDummy.hpp
 	UserInfoDummy.hpp
+	accountList.cpp
 	Test.cpp
+)
+
+ADD_EXECUTABLE(debug
+	accountList.cpp
+	AccountDummy.hpp
+	UserInfoDummy.hpp
+	accountList.cpp
+	MAIN.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest)

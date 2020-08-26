@@ -12,15 +12,15 @@ class AccountList {
 
 	private: 
 		
-		static AccountList* AccountList_; // we hold the pointer to the object
+		static AccountList* AccountList_; // we hold the pointer to the object This is supposed to be static but will not compile when it is, readon unkown
 
-		AccountList(UserInfoDummy* readerOne,UserInfoDummy* readerTwo); // must be private so we control the instantiation of new objects of this type to maintain the singleton design pattern
-		
+		AccountList(UserInfoDummy* readerOne,UserInfoDummy* readerTwo); // must be private so we control the instantiation of new objects of this type to maintain the singleton design pcattern
+		public:
 		~AccountList(); // kept private to ensure that the object is only destroyed on shut down
-
-		unordered_map<int,AccountDummy*>* database; // this is our "data" the object stores
+private: // testing :)
+		unordered_map<int,AccountDummy*>* database = new unordered_map<int,AccountDummy*>(); // this is our "data" the object stores
 	
-		AccountDummy* userPointer = NULL; // this pointer holds the account we are logged into, this is useful when saving individual account data.
+		AccountDummy* userPointer = nullptr; // this pointer holds the account we are logged into, this is useful when saving individual account data.
 	
 		vector<UserInfoDummy*> objects; // a vector that holds pointers to objects that save the database in different filetypes, to be populated in .cpp
 
@@ -31,9 +31,9 @@ class AccountList {
 		void createAccount(); //  a function for admins to create new accounts in the list						Accessed by adminMenu
 		
 		void deleteAccount(); // a function for admins to delete accounts within the list						Accessed by adminMenu
-		
-		void traverseDatabase(int ID); // a helper function that allows both admins and users to search the list for a given account	Helper for login, delete and create
-
+		public: //for the purposes of testing
+		AccountDummy* traverseDatabase(int ID); // a helper function that allows both admins and users to search the list for a given account	Helper for login, delete and create
+private:
 		void logIn(); //a function that allows users to sign into their accounts.							Accessed by interface
 	
 	public:
@@ -42,11 +42,13 @@ class AccountList {
 
 		void operator= (const AccountList &) = delete; // we con't let the object be assignable						MUST BE PUBLIC
 	
-		AccountList* GetInstance(); // the public interface which manages the creation of the AccountList object			MUST BE PUBLIC
+		AccountList* GetInstance(UserInfoDummy*,UserInfoDummy*); // the public interface which creates  AccountList object		MUST BE PUBLIC
 
 		void interface(); // the public interface that allows a user to log in or quit the program					MUST BE PUBLIC
 
 		void logOut(); // unsets the user pointer and reprompts log in									MUST BE PUBLIC - called by proxy
+
+		int size(); //test function to verifgy size of the list
 };
 
 #endif
