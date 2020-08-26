@@ -38,7 +38,7 @@ Used to save the information of each account into a variety of files. One will b
 
 ![Proxy](https://user-images.githubusercontent.com/59351131/91332109-86b41380-e780-11ea-8e34-398d35aa1ddf.png)
 
-![Singleton](https://github.com/dchan066-862012834/CS100_Final_Project/blob/main/SIngletonUML.PNG)
+![Singleton](https://github.com/dchan066-862012834/CS100_Final_Project/blob/main/UML3.pdf)
 
 ![Strategy OMT](https://user-images.githubusercontent.com/56089475/90987848-005ebe00-e543-11ea-973d-72307a25cc0f.png)
 
