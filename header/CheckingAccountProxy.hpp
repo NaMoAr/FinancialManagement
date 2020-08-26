@@ -21,8 +21,8 @@ public:
 	CheckingAccountProxy(double initialBalance, int userID, string pass, double homeRent);
 	~CheckingAccountProxy();
 
-	stringstream* deposit(double depMoney, stringstream* ss);
-        stringstream* withdraw(double withMoney, stringstream* ss);
+	stringstream* deposit(double depMoney);
+        stringstream* withdraw(double withMoney);
 	void logOut(stringstream* ss);
         bool accountHistory();
 	void setBalance(double bl);
