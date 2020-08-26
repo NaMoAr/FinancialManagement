@@ -1,4 +1,4 @@
-#include "txtSave.hpp"
+#include "../header/txtSave.hpp"
 
 TXTSave::~TXTSave() {
 	UserInfo* u = new TXTSave();
@@ -8,7 +8,7 @@ TXTSave::~TXTSave() {
 }
 
 void TXTSave::PrintList() {
-	ofstream outFS("files/UserInfo.txt");
+	ofstream outFS("../files/UserInfo.txt");
 	if (!outFS.is_open()) {
 		cout << "Error! Cannot open TXT file for reading out" << endl;
 	}
@@ -52,7 +52,7 @@ vector<vector<string>> TXTSave::ReadList() {
 	string t;
 	string c;
 	
-	ifstream inFS("files/UserInfo.txt");
+	ifstream inFS("../files/UserInfo.txt");
 	if (!inFS.is_open()) {	
 		cout << "Error! Cannot open TXT file for reading in" << endl;
 	}
