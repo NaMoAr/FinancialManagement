@@ -1,9 +1,8 @@
-#include "accountList.hpp"
+#include "../header/accountList.hpp"
+#include "../header/txtSave.hpp"
+#include "../header/csvSave.hpp"
 #include <typeinfo>
 #include <vector>
-// TODO: verify the function and implementation of utilized unordered_map functions associated to the object "list"
-
-//WARNING: altering pointers to accept dummy pointers for testing WARNING!
 using namespace std;
 
 AccountList *AccountList::AccountList_ = 0;
@@ -11,33 +10,24 @@ AccountList *AccountList::AccountList_ = 0;
 AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database 
 // call Chloe's class to read the database file
 	AccountList_ = this;
-	cout << "we made it to the constructor, hooray" << endl;
 	objects.push_back(object1);
 	objects.push_back(Object2); // NOTE: whenever a new file save type is added it must be included in the constructor and as a pushback here
 	auto v = object1->ReadList();
-
 	std::vector< std::vector<string> >::const_iterator row;  
-	cout << "spooled up and ready to loop" <<endl;
- 	for (int row = 0; row < v.size(); ++row){ 
-		cout << "loop#"<<row+1<<endl;
-		auto it = v.at(row);	//seg here
-		cout << "iterator created" << endl;
+ 	for (int row = 0; row < v.size(); ++row) {
+		auto it = v.at(row);
 		if (it.at(0)== "c") {//checking entry
-			Account* temp = new Account(std::stod(it.at(1)), std::stoi(it.at(3)), it.at(2),std::stoi(it.at(4)));
-			cout << "hmm?" << endl;
-			database->emplace(std::stoi(it.at(3)), temp); //seg
-			cout << "creation complete" << endl;
+			CheckingAccountProxy* temp = new CheckingAccountProxy(std::stod(it.at(1)), std::stoi(it.at(3)), it.at(2),std::stoi(it.at(4)));
+			database->emplace(std::stoi(it.at(3)), temp); 
 		}	
 		else {// otherwise saving entry
-			Account* Temp = new Account(std::stod(it.at(1)), std::stoi(it.at(3)), it.at(2),std::stoi(it.at(4)),std::stod(it.at(5)));
-			cout << "hmmm?" << endl;
-			database->emplace(std::stoi(it.at(3)),Temp); //seg
-			cout << "creation complete" << endl;
+			SavingAccountProxy* Temp = new SavingAccountProxy(std::stod(it.at(1)), std::stoi(it.at(3)), it.at(2),std::stoi(it.at(4)),std::stod(it.at(5)));
+			database->emplace(std::stoi(it.at(3)),Temp);
 		}
 	} 
 }
 
-AccountList::~AccountList() {
+AccountList::~AccountList() { //TODO Get this working
 // call Chloe's class to write the account data to the database file
 
 
@@ -47,12 +37,17 @@ AccountList::~AccountList() {
 		
 		while (!database->empty()) {
 			
-			Account* x = database->at(i);
+			 auto x = database->at(i);
 			i++;
-			if (typeid(x.scond.name() == CheckingAccountProxy*)
-				OBJECT->SaveInfo("c",x->getID(), x->getPassword(), x->getBalance(), x->getMonthlyHomeRent()); 
-			if (typeid(x.second).name() == SavingAccountProxy*)//		NOTE: testing can't support this request at this time, we'll fo it later
-				OBJECT->SaveInfo("s",x->getID(), x->getPassword(), x->getBalance(), x->getStockNum(),x->getStockPrice() );
+			if (typeid(x).name() == "CheckingAccountProxy"){
+				CheckingAccountProxy* y = dynamic_cast<CheckingAccountProxy*>(x);
+				OBJECT->SaveInfo("c",y->getID(), y->getPassword(), y->getBalance(), y->getMonthlyHomeRent()); 
+			}
+			if (typeid(x).name() == "SavingAccountProxy"){//		NOTE: testing can't support this request at this time, we'll fo it later
+				SavingAccountProxy* z = dynamic_cast<SavingAccountProxy*>(x);
+				OBJECT->SaveInfo("s",z->getID(), z->getPassword(), z->getBalance(), z->getStockNum(),z->getStockPrice() );
+
+			}
 			delete x;
 
 		} //once objects in memory are deleted we can close the program
@@ -63,10 +58,8 @@ delete this; // this might be overkill or could somehow break the program? not r
 
 
 AccountList* AccountList::GetInstance(UserInfo* one, UserInfo* two) {
-// check to see if an accountlist exists, if so return it
- cout << "we in" << endl;  
+// check to see if an accountlist exists, if so return it 
 	if (AccountList_==nullptr) AccountList_ = new AccountList(one,two);
-	cout << "we out" <<endl;
 	return AccountList_;
 // if it doesnt exist create the object by calling the constructor
 // return the pointer of the object you just created
@@ -96,8 +89,6 @@ void AccountList::createAccount () {
 	// this function searches the database for a given id returning it
 	unordered_map<int,Account*>::iterator it = database->begin();
 		ID = it->first+1; 
-		std::cout<< ID << endl;
-	
 	// if (ID == 0) ID = database->end-1.first;
 	std::cout << "account ID generated: " << ID << endl;
 	// specify initial deposit
@@ -115,14 +106,12 @@ void AccountList::createAccount () {
 	}
 	if (flag = 'c') {
 		// construct and store a checking account object
-		Account* toAdd = new Account(value,ID,pass,0,0);
-		//Account* toAdd = new CheckingAccountProxy(value,ID,pass,0,0);
+		CheckingAccountProxy* toAdd = new CheckingAccountProxy(value,ID,pass,0);
 		database->insert({ID, toAdd});
 		return;
 	}
 	// construct and store a saving account object
-	Account* toadd = new Account(value,ID,pass,0);
-	//Account* toadd = new SavingAccountProxy(value,ID,pass,0);
+	SavingAccountProxy* toadd = new SavingAccountProxy(value,ID,pass,0,0);
 	database->insert({ID, toadd});
 	return;
 }
@@ -173,7 +162,7 @@ void AccountList::logIn() {
 	std::cout << "Enter Password" << endl;
 	std::cin >> pass;
 	if (userPointer->getPassword() != pass) {std::cout << "password invalid, terminating"; return;}
-	userPointer->Menu(); // this function call will depend on the way Najmeh implements her menu
+	//userPointer->Menu(); // TODO najmeh must write her interface function;
 }
 
 void AccountList::adminMenu() {

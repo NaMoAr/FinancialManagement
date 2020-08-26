@@ -4,8 +4,9 @@
 #include <unordered_map>
 #include <string>
 #include <iostream>
-#include "UserInfo.hpp"
-#include "Account.hpp"
+#include "userInfo.hpp"
+#include "CheckingAccountProxy.hpp"
+#include "SavingAccountProxy.hpp"
 
 using namespace std;
 class AccountList {
@@ -20,7 +21,7 @@ class AccountList {
 
 		unordered_map<int,Account*>* database = new unordered_map<int,Account*>(); // this is our "data" the object stores
 	
-		AccountDummy* userPointer = nullptr; // this pointer holds the account we are logged into, this is useful when saving individual account data.
+		Account* userPointer = nullptr; // this pointer holds the account we are logged into, this is useful when saving individual account data.
 	
 		vector<UserInfo*> objects; // a vector that holds pointers to objects that save the database in different filetypes, to be populated in .cpp
 
