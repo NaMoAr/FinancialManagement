@@ -14,6 +14,7 @@ using namespace std;
  * @param theUserID the id of user
  * @param pass the password of user
  * @param stochShareNum the number of stock shares that the user have bought
+ * @param stochSharePrice the price of stock shares that the user have bought
  */
 SavingAccount::SavingAccount(double initialBalance, int theUserID,string pass, int stochShareNum, double stockSharePrice)
 {
