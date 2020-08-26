@@ -31,15 +31,14 @@ public:
 	void setPassword(string pass);
 	string getPassword();
 	int getID();
-        double fetchStockPrice();
-        double calculateProfit();
 	stringstream* buyStock();
    	stringstream* sellStock();
    	void setStockNum(int stockShareNum);
    	double getStockNum();
    	void setStockPrice(double stockSharePrice);
    	double getStockPrice();
-
+	double fetchStockPrice();
+	double calculateProfit();
 };
 
 #endif // CHECKINGACCOUNTPROXY_HPP
