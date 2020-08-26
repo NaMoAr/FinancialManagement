@@ -1,3 +1,9 @@
+/*
+ * A real class of proxy design pattern consisting of CheckingAccount's 
+ * functions
+ * @auther Najmeh M.A
+ */
+
 #ifndef CHECKINGACCOUNT_HPP
 #define CHECKINGACCOUNT_HPP
 #include "Account.hpp"
