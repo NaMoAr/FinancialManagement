@@ -8,7 +8,7 @@ using namespace std;
 
 AccountList *AccountList::AccountList_ = 0;
  
-AccountList::AccountList (UserInfoDummy* object1, UserInfoDummy* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database 
+AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database 
 // call Chloe's class to read the database file
 	AccountList_ = this;
 	cout << "we made it to the constructor, hooray" << endl;
@@ -23,13 +23,13 @@ AccountList::AccountList (UserInfoDummy* object1, UserInfoDummy* Object2) { // w
 		auto it = v.at(row);	//seg here
 		cout << "iterator created" << endl;
 		if (it.at(0)== "c") {//checking entry
-			AccountDummy* temp = new AccountDummy(std::stod(it.at(1)), std::stoi(it.at(3)), it.at(2),std::stoi(it.at(4)));
+			Account* temp = new Account(std::stod(it.at(1)), std::stoi(it.at(3)), it.at(2),std::stoi(it.at(4)));
 			cout << "hmm?" << endl;
 			database->emplace(std::stoi(it.at(3)), temp); //seg
 			cout << "creation complete" << endl;
 		}	
 		else {// otherwise saving entry
-			AccountDummy* Temp = new AccountDummy(std::stod(it.at(1)), std::stoi(it.at(3)), it.at(2),std::stoi(it.at(4)),std::stod(it.at(5)));
+			Account* Temp = new Account(std::stod(it.at(1)), std::stoi(it.at(3)), it.at(2),std::stoi(it.at(4)),std::stod(it.at(5)));
 			cout << "hmmm?" << endl;
 			database->emplace(std::stoi(it.at(3)),Temp); //seg
 			cout << "creation complete" << endl;
@@ -47,11 +47,11 @@ AccountList::~AccountList() {
 		
 		while (!database->empty()) {
 			
-			AccountDummy* x = database->at(i);
+			Account* x = database->at(i);
 			i++;
-	//		if (typeid(x.scond.name() == CheckingAccountProxy*)
-	//			OBJECT->SaveInfo("c",x->getID(), x->getPassword(), x->getBalance(), x->getMonthlyHomeRent()); 
-	//		if (typeid(x.second).name() == SavingAccountProxy*)//		NOTE: testing can't support this request at this time, we'll fo it later
+			if (typeid(x.scond.name() == CheckingAccountProxy*)
+				OBJECT->SaveInfo("c",x->getID(), x->getPassword(), x->getBalance(), x->getMonthlyHomeRent()); 
+			if (typeid(x.second).name() == SavingAccountProxy*)//		NOTE: testing can't support this request at this time, we'll fo it later
 				OBJECT->SaveInfo("s",x->getID(), x->getPassword(), x->getBalance(), x->getStockNum(),x->getStockPrice() );
 			delete x;
 
@@ -62,7 +62,7 @@ delete this; // this might be overkill or could somehow break the program? not r
 }
 
 
-AccountList* AccountList::GetInstance(UserInfoDummy* one, UserInfoDummy* two) {
+AccountList* AccountList::GetInstance(UserInfo* one, UserInfo* two) {
 // check to see if an accountlist exists, if so return it
  cout << "we in" << endl;  
 	if (AccountList_==nullptr) AccountList_ = new AccountList(one,two);
@@ -94,7 +94,7 @@ void AccountList::createAccount () {
 	// generate a unique ID
 	int ID = 0;
 	// this function searches the database for a given id returning it
-	unordered_map<int,AccountDummy*>::iterator it = database->begin();
+	unordered_map<int,Account*>::iterator it = database->begin();
 		ID = it->first+1; 
 		std::cout<< ID << endl;
 	
@@ -115,20 +115,20 @@ void AccountList::createAccount () {
 	}
 	if (flag = 'c') {
 		// construct and store a checking account object
-		AccountDummy* toAdd = new AccountDummy(value,ID,pass,0,0);
+		Account* toAdd = new Account(value,ID,pass,0,0);
 		//Account* toAdd = new CheckingAccountProxy(value,ID,pass,0,0);
 		database->insert({ID, toAdd});
 		return;
 	}
 	// construct and store a saving account object
-	AccountDummy* toadd = new AccountDummy(value,ID,pass,0);
+	Account* toadd = new Account(value,ID,pass,0);
 	//Account* toadd = new SavingAccountProxy(value,ID,pass,0);
 	database->insert({ID, toadd});
 	return;
 }
 
 void AccountList::deleteAccount () {
-	AccountDummy* toRemove;	
+	Account* toRemove;	
 	int ID = 0;
 	// search for id, report an error if it doesn't exist 
 	std::cout << "specify account ID to remove" << endl;
@@ -147,11 +147,11 @@ int AccountList::size(){
 }
 
 // a helper function to let people search the list
-AccountDummy* AccountList::traverseDatabase (int ID) {  // Final implementation will return an account*
-	AccountDummy* temp = nullptr; // defualt assumption the pointer isnt there
+Account* AccountList::traverseDatabase (int ID) {  // Final implementation will return an account*
+	Account* temp = nullptr; // defualt assumption the pointer isnt there
 		
 	// this function searches the database for a given id returning it
-	for (unordered_map<int,AccountDummy*>::iterator it = database->begin();it != database->end() ;it++) {
+	for (unordered_map<int,Account*>::iterator it = database->begin();it != database->end() ;it++) {
 		if (ID == it->first)
 			temp = it->second; //segs here:
 	}
