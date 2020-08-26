@@ -1,3 +1,9 @@
+/*
+ * A proxy class of proxy design pattern consisting of 
+ * SavingAccountProxy's functions
+ * @auther Najmeh M.A
+ */
+
 #ifndef SAVINGACCOUNTPROXY_HPP
 #define SAVINGACCOUNTPROXY_HPP
 #include "Account.hpp"
