@@ -42,16 +42,7 @@ Used to save the information of each account into a variety of files. One will b
 
 ![Strategy OMT](https://user-images.githubusercontent.com/56089475/90987848-005ebe00-e543-11ea-973d-72307a25cc0f.png)
 
- > ## Phase III
- > You will need to schedule two check-in's with the TA (during lab hours or office hours) where your entire group will meet with them and discuss:
- > * What you have each done up to this point
- > * What you plan to do until the next meeting (or until the final demo)
- > * If there is anything that is getting in your way
  
- > You may notice that this is effectively a "standup" meeting. We suggest that as a team you have a daily (or every other day) standup, but this will be a bit more formal with00 the TA. 
- 
- > **Your meetings cannot be in the same week of the session so plan ahead**
-
  > ## Final deliverable
  ## Screenshots
  > Screenshots of the input/output after running your application
