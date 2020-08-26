@@ -1,3 +1,9 @@
+/*
+ * A real class of proxy design pattern consisting of SavingAccount's 
+ * functions
+ * @auther Najmeh M.A
+ */
+
 #ifndef SavingAccount_HPP
 #define SavingAccount_HPP
 #include<string>
