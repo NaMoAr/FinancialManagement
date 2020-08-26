@@ -83,14 +83,14 @@ TEST(CheckingAccountProxyTest, logOutWithEmptybuffer){
 
 TEST(CheckingAccountProxy, deposit){
     
-  stringstream* ss = cap->deposit(30, nullptr);
+  stringstream* ss = cap->deposit(30);
   EXPECT_EQ(cap->getBalance(),730);
   EXPECT_NE(ss , nullptr);
 }
 
 TEST(CheckingAccountProxy, withdraw){
 
-  stringstream* ss = cap->withdraw(30 , nullptr);
+  stringstream* ss = cap->withdraw(30);
   EXPECT_EQ(cap->getBalance(),700);
   EXPECT_NE(ss , nullptr);
 
