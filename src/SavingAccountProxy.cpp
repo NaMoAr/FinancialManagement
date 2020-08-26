@@ -10,7 +10,14 @@
 using namespace std;
 
 
-
+/*
+ * Constructor for SavingAccountProxy class
+ * @param initialBalance the initial balance of checking account
+ * @param theUserID the id of user
+ * @param pass the password of user
+ * @param stochShareNum the number of stock shares that the user have bought
+ * @param stockSharePrice the price of stock shares that the user have bought
+ */
 SavingAccountProxy::SavingAccountProxy(double initialBalance, int theUserID,string pass, int stochShareNum, double stockSharePrice)
 {
 	balance = initialBalance;
@@ -25,7 +32,11 @@ SavingAccountProxy::~SavingAccountProxy()
 {
 
 }
-
+/*
+ write the new balance ofter each transaction depostie into a stringstream buffer
+ @param depMoney the money value that the user wants to deposit into his saving account 
+ @return         a pointer to the stringstream buffer that holds transaction deposite history
+ */
 stringstream* SavingAccountProxy::deposit(double depMoney)
 {
 	stringstream* ss;
@@ -39,7 +50,11 @@ stringstream* SavingAccountProxy::deposit(double depMoney)
 }
 
 
-
+/*
+ * write the new balance ofter each transaction withdraw into a stringstream buffer
+ * @param withMoney the money value that the user wants to withdraw from his saving account
+ * @return         a pointer to the stringstream buffer that holds transaction withdraw history
+ */
 stringstream* SavingAccountProxy::withdraw(double withMoney)
 {
 	stringstream* ss;
@@ -58,16 +73,25 @@ stringstream* SavingAccountProxy::withdraw(double withMoney)
                 }
 
 }
-
+/*
+ * calls the logOut function from the real class SavingAccount
+ * @param ss the stringstream buffer that holds all the transactions of the saving account
+ */
 void SavingAccountProxy::logOut(stringstream* ss)
 {
     ptr->logOut(ss);
 }
-
+/*
+ * calls the setBalance function from the real class SavingAccount
+ * @param bl the users's saving account balance
+ */
 void SavingAccountProxy::setBalance(double bl) {
 	ptr->setBalance(bl);
 }
-
+/*
+ * calls the getBalance function from the real class SavingAccount
+ * @return the users's saving account balance
+ */
 double SavingAccountProxy::getBalance()
 {
 	return ptr->getBalance();
@@ -76,22 +100,35 @@ double SavingAccountProxy::getBalance()
 
 
 
-
+/*
+ * calls the accountHistory function from the real class SavingAccount
+ * @return false if it fails to open the file, true if it opens the file and read it successfully
+ */
 bool SavingAccountProxy::accountHistory()
 {
 	return ptr->accountHistory();
 }
 
-
+/*
+ * generate a random number between 50 to 70 as the current stock share price
+ * @return the current price of stock share
+ */
 double SavingAccountProxy::fetchStockPrice() {
 	double sharePrice= double( rand() % 20) + 50;
 	return sharePrice;
 }
-
+/*
+ * calculate the profit based on the current share price
+ * @retrun the user's profit at the current time 
+ */
 double SavingAccountProxy::calculateProfit() {
 	return (getStockNum() * fetchStockPrice()) - (getStockNum() * getStockPrice());
 }
-
+/*
+ * provide the current price of the stock share, reasign the user's number and price of stock shares 
+ * upon a buying, withdraw money from the user saving account uopn buying
+ * @return pointer to stringstram buffer which hold the transactions that happened when the user buy stocks  
+ */
 stringstream* SavingAccountProxy::buyStock( ) {
 	
 	stringstream* ss = nullptr;
@@ -110,6 +147,11 @@ stringstream* SavingAccountProxy::buyStock( ) {
 	return ss;
 }
 
+ /*
+ * provide the current price of the stock share, reasign the user's number and price of stock shares
+ * upon a selling, deposit money from the user saving account uopn selling
+ * @return pointer to stringstram buffer which hold the transactions that happened when the user sell stocks
+ */
 
 stringstream* SavingAccountProxy::sellStock() {
 	stringstream* ss = nullptr;
@@ -128,34 +170,55 @@ stringstream* SavingAccountProxy::sellStock() {
 	}
 	return ss;
 }
-
+/*
+ * calls the setStockNum function from the real class SavingAccount
+ * @param stockShareNum number of stock shares that the user have bought
+ */
 void SavingAccountProxy::setStockNum(int stockShareNum) {
 	ptr->setStockNum(stockShareNum);
 }
-
+/*
+ * calls the getStockNum function from the real class SavingAccount
+ * @return number of stock shares that the user have bought
+ */
 double SavingAccountProxy::getStockNum() {
 	return ptr->getStockNum();
 }
-
+/*
+ * calls the setStockPrice function from the real class SavingAccount
+ * @param stockSharePrice price of stock shares that the user have bought
+ */
 void SavingAccountProxy::setStockPrice(double stockSharePrice) {
 	ptr->setStockPrice(stockSharePrice);
 }
-
+ /*
+ * calls the getStockPrice function from the real class SavingAccount
+ * @return price of stock shares that the user have bought
+ */
 double SavingAccountProxy::getStockPrice() {
 	return ptr->getStockPrice();
 }
 
-
+/*
+ * calls the setPassword function from the real class SavingAccount
+ * @param the user's password
+ */
 void SavingAccountProxy::setPassword(string pass)
 {
 	ptr->setPassword(pass);
 }
-
+/*
+ * calls the getPassword function from the real class SavingAccount
+ * @return the user's password
+ */
 string SavingAccountProxy::getPassword()
 {
 	return ptr->getPassword();
 }
-
+/*
+ * calls the getID function from the real class SavingAccount
+ * @return the user's ID
+ */
 int SavingAccountProxy::getID()
 {
 	return ptr->getID();
