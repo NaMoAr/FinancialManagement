@@ -101,14 +101,14 @@ TEST(SavingAccountProxyTest, logOutWithEmptybuffer){
 }
 
 TEST(SavingAccountProxy, deposit){
-   stringstream* ss = sap->deposit(30, nullptr);
+   stringstream* ss = sap->deposit(30);
    EXPECT_EQ(sap->getBalance(),730);
    EXPECT_NE(ss , nullptr);
 }
 
 TEST(SavingAccountProxy, withdraw){
  
-    stringstream* ss = sap->withdraw(30 , nullptr);
+    stringstream* ss = sap->withdraw(30);
     EXPECT_EQ(sap->getBalance(),700);
     EXPECT_NE(ss , nullptr);
 }
