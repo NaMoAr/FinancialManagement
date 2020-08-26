@@ -1,4 +1,4 @@
-#include "csvSave.hpp"
+#include "../header/csvSave.hpp"
 
 CSVSave::~CSVSave() {
 	UserInfo* u = new CSVSave();
@@ -8,7 +8,7 @@ CSVSave::~CSVSave() {
 }
 
 void CSVSave::PrintList() {
-	ofstream outFS("files/UserInfo.csv");
+	ofstream outFS("../files/UserInfo.csv");
 	if(!outFS.is_open()) {
 		cout << "Error! Cannot open CSV file for reading out" << endl;
 	}
@@ -51,7 +51,7 @@ vector<vector<string>> CSVSave::ReadList() {
 	string c;
 	string t;
 	
-	ifstream inFS("files/UserInfo.csv");
+	ifstream inFS("../files/UserInfo.csv");
 	if (!inFS.is_open()) {
 		cout << "Error! Cannot open CSV file for reading in" << endl;
 	}
