@@ -1,3 +1,7 @@
+/**
+ * An interface that includes the common functions of its subclasses
+ * @auther Najmeh M.A
+ */
 #ifndef ACCOUNT_HPP
 #define ACCOUNT_HPP
 #include<string>
