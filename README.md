@@ -34,9 +34,9 @@ Used to save the information of each account into a variety of files. One will b
 
 ## Class Diagram
 
-![Final_OMT](https://user-images.githubusercontent.com/59351131/91249565-fdfb9000-e70b-11ea-988f-5d139370ed46.png)
+![Final_OMT](https://user-images.githubusercontent.com/59351131/91332052-7439da00-e780-11ea-8bef-a19bc561da3a.png)
 
-![Proxy](https://user-images.githubusercontent.com/59351131/91249679-313e1f00-e70c-11ea-9dc2-0b0488a54b1a.png)
+![Proxy](https://user-images.githubusercontent.com/59351131/91332109-86b41380-e780-11ea-8e34-398d35aa1ddf.png)
 
 ![Singleton](https://github.com/dchan066-862012834/CS100_Final_Project/blob/main/OMT.PNG)
 
