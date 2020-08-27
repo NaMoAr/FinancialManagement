@@ -90,7 +90,7 @@ void SavingAccount::setStockNum(int stockShareNum) {
  * give the number of stock shares that the user have bought
  * @return number of stock shares that the user have bought
  */
-double SavingAccount::getStockNum() {
+int SavingAccount::getStockNum() {
 	return stockNum;
 }
  /*
