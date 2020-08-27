@@ -4,16 +4,16 @@
  
 ## Project Description
 
-This Financial Management Application is intended to help users keep track of their money, be it in a checking or savings account. Upon logging in, existing users have the option to view their balnace, deposit or withdraw funds, and create a projected savings goal.  
+This Financial Management Application is intended to help users keep track of their money, be it in a checking or savings account. Upon logging in, existing users have the option to view their balnace, deposit or withdraw funds, create a projected savings goal for a checking account, and make profit from stock market using a saving account.  
  
 Raison D'etre:
-Finance management is an essential part of life for everyone. This app helps users to practice and plan their financial life by providing money management features that are consistent with their account balance.  Moreover, it helps users to see their stock profit at a specific period of time (customizable by themselves).
+Finance management is an essential part of life for everyone. This app helps users to practice and plan their financial life by providing money management features that are consistent with their account balance.  Moreover, users are able to buy and sell stock share and see their stock profit at any time. 
 
 Languages and tools:
 This project will be written in C++.
 
 Tools:
-* Tool to fetch the most current stock market prices
+* Tool to fetch the most current stock market prices (We were not able to apply this tool at the short time that we had, however we pretend fetching current market prices by using a method that generate a random number in a specific range)
 
 Input and output:
 
