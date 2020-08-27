@@ -76,6 +76,14 @@ stringstream* CheckingAccountProxy::withdraw(double withMoney)
 		}
 
 	}
+	else {
+		balance = getBalance() - withMoney;
+		s << "Checking account, $" << withMoney << " has been withdrawn, " << "New Balance: $" << balance << endl;
+		ss = &s;
+		cout << withMoney << " dollors has been withdrawn" << endl;
+		setBalance(balance);
+		return ss;
+	}
 }
 	
 
