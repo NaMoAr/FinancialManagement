@@ -7,36 +7,50 @@ using namespace std;
 
 AccountList *AccountList::AccountList_ = 0;
  
-AccountList::AccountList (TXTSave* object1, CSVSave* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database 
-//TODO suffering out of range
+AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database 
 // call Chloe's class to read the database file
-	AccountList_ = this;
-	rOne = object1;
-	rTwo = Object2; // NOTE: whenever a new file save type is added it must be included in the constructor and as a pushback here
-	//vector<vector<string>> v = rOne->ReadList();
-	
-	// vector<vector<string>> v  = {};
+ // NOTE: whenever a new file save type is added it must be included in the constructor and as a pushback here
 
-	vector<vector<string>> v = {{"s","1","apple","12345","5","4"},{"c","2","banana","123456","6","0"},{"s","3","carrot","123456","6","3"},{"c","4","donut","12345","5","0"},{"c","5","eggtart","123456","7","0"}};
-
-
-
-
-	cout << "list read" << endl;
 	std::vector< std::vector<string> >::const_iterator row;
-	if (!v.empty()){
- 		for (int row = 0; row < v.size(); ++row) {
-			auto it = v.at(row);
-			if (it.at(0)== "c") {//checking entry
-				CheckingAccountProxy* temp = new CheckingAccountProxy(std::stod(it.at(3)), std::stoi(it.at(1)), it.at(2),std::stoi(it.at(4)));
-				database->emplace(std::stoi(it.at(1)), temp); cout << "creating check" << endl; 
-			}	
-			else {// otherwise saving entry
-				SavingAccountProxy* Temp = new SavingAccountProxy(std::stod(it.at(3)), std::stoi(it.at(1)), it.at(2),std::stoi(it.at(4)),std::stod(it.at(5)));
-				database->emplace(std::stoi(it.at(1)),Temp); cout << "creating save" << endl;
-			}
-		}
-	} 
+
+  vector<vector<string>> v = object1->ReadList();
+
+  //vector<vector<string>> v = {{"s","1","apple","12345.000000","5.000000","4"},{"c","2","banana","123456.000000","6.000000","0"},{"s","3","carrot","123456.000000","6.000000","3"},{"c","4","donut","12345.000000","5.000000","0"},{"c","5","eggtart","123456.000000","7.000000","0"}};
+
+  cout << "read list" << endl;
+  
+  if (!v.empty()) {
+    for (int j = 0; j < (v.at(0)).size(); ++j) {
+      if((v.at(0)).at(j) == "c") {
+        CheckingAccountProxy* temp = new CheckingAccountProxy( stod((v.at(3)).at(j)), stoi((v.at(1)).at(j)), (v.at(2)).at(j), stod((v.at(4)).at(j)) );
+        database->emplace( stoi((v.at(1)).at(j)), temp );
+        cout << "creating check" << endl;
+      }
+      else {
+        SavingAccountProxy* Temp = new SavingAccountProxy ( stod((v.at(3)).at(j)), stoi((v.at(1)).at(j)), (v.at(2)).at(j), stoi((v.at(5)).at(j)), stod((v.at(4)).at(j)) );
+        database->emplace( stoi((v.at(1)).at(j)), Temp );
+        cout << "creating save" << endl;
+      }
+    }
+  }
+
+	// if (!v.empty()){
+ 	// 	for (int row = 0; row < v.size(); ++row) {
+	// 		auto it = v.at(row);
+	// 		if (it.at(0)== "c") {//checking entry
+  //       cout << "CHECK" << endl;
+	// 			CheckingAccountProxy* temp = new CheckingAccountProxy(stod(it.at(3)), stoi(it.at(1)), it.at(2),stod(it.at(4)));
+	// 			database->emplace(stoi(it.at(1)), temp); 
+  //       cout << "creating check" << endl; 
+	// 		}	
+	// 		else {// otherwise saving entry
+  //       cout << "SAVINGS" << endl;
+	// 			SavingAccountProxy* Temp = new SavingAccountProxy(stod(it.at(3)), stoi(it.at(1)), it.at(2), stoi(it.at(5)), stod(it.at(4))); 
+	// 			database->emplace(stoi(it.at(1)),Temp); 
+  //       cout << "creating save" << endl;
+	// 		}
+	// 	}
+	// }
 }
 
 AccountList::~AccountList() { //TODO Get this working suffering out of range
@@ -74,7 +88,7 @@ AccountList::~AccountList() { //TODO Get this working suffering out of range
 }
 
 
-AccountList* AccountList::GetInstance(TXTSave* one, CSVSave* two) {
+AccountList* AccountList::GetInstance(UserInfo* one, UserInfo* two) {
 // check to see if an accountlist exists, if so return it 
 	if (AccountList_==nullptr) AccountList_ = new AccountList(one,two);
 	return AccountList_;

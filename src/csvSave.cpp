@@ -3,12 +3,11 @@
 CSVSave::~CSVSave() {
 	UserInfo* u = new CSVSave();
 	u->PrintList();
-	delete u;
 //When the program terminates, destructor calls PrintList to print the accounts into UserInfo.csv
 }
 
 void CSVSave::PrintList() {
-	ofstream outFS("../files/UserInfo.csv");
+	ofstream outFS("files/UserInfo.csv");
 	if(!outFS.is_open()) {
 		cout << "Error! Cannot open CSV file for reading out" << endl;
 	}
@@ -37,7 +36,7 @@ void CSVSave::SaveInfo(string ac, int ID, string pass, double b, double f) {
 //Called by CustomerList to store info when Account Type is a checking account. stock vector still pushes back a 0 for consistency with the other vectors, and for when reading in list
 }
 
-void CSVSave::SaveInfo(string ac, int ID, string pass, double b, double f, double n) {
+void CSVSave::SaveInfo(string ac, int ID, string pass, double b, double f, int n) {
 	acType.push_back(ac);
 	id.push_back(to_string(ID));
 	pw.push_back(pass);
@@ -51,7 +50,7 @@ vector<vector<string>> CSVSave::ReadList() {
 	string c;
 	string t;
 	
-	ifstream inFS("../files/UserInfo.csv");
+	ifstream inFS("files/UserInfo.csv");
 	if (!inFS.is_open()) {
 		cout << "Error! Cannot open CSV file for reading in" << endl;
 	}

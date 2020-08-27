@@ -1,5 +1,4 @@
 // all proper includes
-#include"../header/userInfo.hpp"
 #include"../header/csvSave.hpp"
 #include"../header/txtSave.hpp"
 #include"../header/accountList.hpp"
@@ -12,8 +11,8 @@
 int main() {
 
 	// make the userinfo objects
-	TXTSave* readerOne =  new TXTSave();
-	CSVSave* readerTwo =  new CSVSave();
+	UserInfo* readerOne =  new TXTSave();
+	UserInfo* readerTwo =  new CSVSave();
 	// make the list with userinfo objects as parametsrs
 	AccountList* DATABASE = DATABASE->GetInstance(readerOne, readerTwo);
 	// call list interface

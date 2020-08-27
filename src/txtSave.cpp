@@ -3,12 +3,11 @@
 TXTSave::~TXTSave() {
 	UserInfo* u = new TXTSave();
 	u->PrintList();
-	delete u;
 //Called upon program termination to write out everything in the vectors to the TXT file
 }
 
 void TXTSave::PrintList() {
-	ofstream outFS("../files/UserInfo.txt");
+	ofstream outFS("files/UserInfo.txt");
 	if (!outFS.is_open()) {
 		cout << "Error! Cannot open TXT file for reading out" << endl;
 	}
@@ -37,7 +36,7 @@ void TXTSave::SaveInfo(string ac, int ID, string pass, double b, double f) {
 //Called by CustomerList if account is a checking account. Stock pushes back "0" as a place holder
 }
 
-void TXTSave::SaveInfo(string ac, int ID, string pass, double b, double f, double n) {
+void TXTSave::SaveInfo(string ac, int ID, string pass, double b, double f, int n) {
 	acType.push_back(ac);
 	id.push_back(to_string(ID));
 	pw.push_back(pass);
@@ -51,9 +50,9 @@ vector<vector<string>> TXTSave::ReadList() {
 	vector<vector<string>> v;
 	string t;
 	string c;
-	ifstream inFS("../files/UserInfo.txt");
+	ifstream inFS ("files/UserInfo.txt");
 	if (!inFS.is_open()) {	
-		cout << "Error! Cannot open file for reading in" << endl;
+		cout << "Error! Cannot open TXT file for reading in" << endl;
 	}
 
 	while (getline(inFS, t)) {
@@ -68,8 +67,24 @@ vector<vector<string>> TXTSave::ReadList() {
 		funds.push_back(t);
 		getline(inFS, t);
 		stock.push_back(t);
-		inFS >> c;
+    		getline(inFS, c);
 	}
+
+/*  string s;
+  for (int i = 0; i < id.size(); ++i) {
+    s = acType.at(i);
+    cout << s << " ";
+    s = id.at(i);
+    cout << s << " ";
+    s = pw.at(i);
+    cout << s << " ";
+    s = balance.at(i);
+    cout << s << " ";
+    s = funds.at(i);
+    cout << s << " ";
+    s = stock.at(i);
+    cout << s << " " << endl;
+  } */
 
 	inFS.close();
 
@@ -79,7 +94,14 @@ vector<vector<string>> TXTSave::ReadList() {
 	v.push_back(balance);
 	v.push_back(funds);
 	v.push_back(stock);
-	
+
+  // for (int i = 0; i < v.size(); ++i) {
+  //     for (int j = 0; j < v.at(i).size(); ++j) {
+  //       cout << (v.at(i)).at(j) << " ";
+  //     }
+  //     cout << endl;
+  // }
+
 	acType.clear();
 	id.clear();
 	pw.clear();

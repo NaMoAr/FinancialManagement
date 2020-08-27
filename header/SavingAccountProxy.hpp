@@ -35,7 +35,7 @@ public:
 	stringstream* buyStock();
    	stringstream* sellStock();
    	void setStockNum(int stockShareNum);
-   	double getStockNum();
+   	int getStockNum();
    	void setStockPrice(double stockSharePrice);
    	double getStockPrice();
 	double fetchStockPrice();

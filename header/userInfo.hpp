@@ -16,7 +16,7 @@ class UserInfo {
 
 		virtual void SaveInfo(string ac, int ID, string pass, double b, double f) = 0; // Called by CustomerList if account type is a checking account
 
-		virtual void SaveInfo(string ac, int ID, string pass, double b, double f, double n) = 0; // Called by CustomerList if account type is a savings account
+		virtual void SaveInfo(string ac, int ID, string pass, double b, double f, int n) = 0; // Called by CustomerList if account type is a savings account
 
 		virtual vector<vector<string>> ReadList() = 0; // Called by CustomerList to read in all info from file, store it into a vector of strings, and then return that vector of vector<string>
 

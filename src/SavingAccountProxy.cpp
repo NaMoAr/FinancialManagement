@@ -181,7 +181,7 @@ void SavingAccountProxy::setStockNum(int stockShareNum) {
  * calls the getStockNum function from the real class SavingAccount
  * @return number of stock shares that the user have bought
  */
-double SavingAccountProxy::getStockNum() {
+int SavingAccountProxy::getStockNum() {
 	return ptr->getStockNum();
 }
 /*

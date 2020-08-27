@@ -30,7 +30,7 @@ public:
 	string getPassword();
 	int getID();
 	void setStockNum(int stockShareNum);
-	double getStockNum();
+	int getStockNum();
 	void setStockPrice(double stockSharePrice);
 	double getStockPrice();
 	char whatType();

@@ -13,7 +13,7 @@ class CSVSave : public UserInfo {
 
 		void SaveInfo(string ac, int ID, string pass, double b, double f); //Called by CustomerList to store Checking Account Info
 
-		void SaveInfo(string ac, int ID, string pass, double b, double f, double n); //Called by CustomerList to store Savings Account Info
+		void SaveInfo(string ac, int ID, string pass, double b, double f, int n); //Called by CustomerList to store Savings Account Info
 
 		vector<vector<string>> ReadList(); //Called by CustomerList, reads in info from CSV file
 
