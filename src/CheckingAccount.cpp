@@ -140,4 +140,4 @@ void CheckingAccount::setBalance(double bl)
 }
 
 
-
+char CheckingAccount::whatType() {return'C';} // helper function to help the list determin account types for strorage

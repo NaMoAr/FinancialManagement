@@ -8,15 +8,16 @@ using namespace std;
 AccountList *AccountList::AccountList_ = 0;
  
 AccountList::AccountList (TXTSave* object1, CSVSave* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database 
+//TODO suffering out of range
 // call Chloe's class to read the database file
 	AccountList_ = this;
-	objects.push_back(object1);
-	objects.push_back(Object2); // NOTE: whenever a new file save type is added it must be included in the constructor and as a pushback here
-	//vector<vector<string>> v = object1->ReadList();
+	rOne = object1;
+	rTwo = Object2; // NOTE: whenever a new file save type is added it must be included in the constructor and as a pushback here
+	//vector<vector<string>> v = rOne->ReadList();
 	
+	// vector<vector<string>> v  = {};
 
-
-	vector<vector<string>> v = {{"s","1","apple","12345","5","4"},{"c","2","banana","123456","6","0"},{"s","3","carrot","123456","6","3"},{"c","4","donut","12345","5","0"},{"c","5","eggtart","123456","7","0"}};
+	//vector<vector<string>> v = {{"s","1","apple","12345","5","4"},{"c","2","banana","123456","6","0"},{"s","3","carrot","123456","6","3"},{"c","4","donut","12345","5","0"},{"c","5","eggtart","123456","7","0"}};
 
 
 
@@ -38,33 +39,38 @@ AccountList::AccountList (TXTSave* object1, CSVSave* Object2) { // we assume tha
 	} 
 }
 
-AccountList::~AccountList() { //TODO Get this working
+AccountList::~AccountList() { //TODO Get this working suffering out of range
 // call Chloe's class to write the account data to the database file
 
-cout << "we have reached the end times" <<endl;
+//cout << "we have reached the end times" <<endl;
 // delete all pointers in the hash map
-	for (auto OBJECT : objects){
-		int i = 1; //NOTE
-		
-		while (!database->empty()) {
-			
-			 auto x = database->at(i);
+		int i = 1;
+		int max = database->size();
+		while (i <= max) {
+	cout << "i is: " << i <<endl;		
+			cout << "we have "<<database->size()-i <<" more accounts to log" << endl;
+			auto x = database->at(i);
 			i++;
-			if (typeid(x).name() == "CheckingAccountProxy"){
+			cout << x->whatType()<< endl;
+			if (x->whatType() == 'c'){
+				cout << "submitting a checking account to save" << endl;
 				CheckingAccountProxy* y = dynamic_cast<CheckingAccountProxy*>(x);
-				OBJECT->SaveInfo("c",y->getID(), y->getPassword(), y->getBalance(), y->getMonthlyHomeRent()); 
+				cout <<"expect c: "<< y->whatType()<< endl;
+				rOne->SaveInfo("c",y->getID(), y->getPassword(), y->getBalance(), y->getMonthlyHomeRent());
+				rTwo->SaveInfo("c",y->getID(), y->getPassword(), y->getBalance(), y->getMonthlyHomeRent());		
 			}
-			if (typeid(x).name() == "SavingAccountProxy"){//		NOTE: testing can't support this request at this time, we'll fo it later
+			if (x->whatType() == 's'){//		NOTE: testing can't support this request at this time, we'll fo it later
+				cout << "submitting a saving account to save" << endl;
 				SavingAccountProxy* z = dynamic_cast<SavingAccountProxy*>(x);
-				OBJECT->SaveInfo("s",z->getID(), z->getPassword(), z->getBalance(), z->getStockNum(),z->getStockPrice() );
-
+				cout<<"expect s: " << z->whatType()<< endl;
+				rOne->SaveInfo("s",z->getID(), z->getPassword(), z->getBalance(), z->getStockNum(),z->getStockPrice() );
+				rTwo->SaveInfo("s",z->getID(), z->getPassword(), z->getBalance(), z->getStockNum(),z->getStockPrice() );
 			}
 			delete x;
+			
 
 		} //once objects in memory are deleted we can close the program
-	} // repeat for each type of save file
- 
-delete this; // this might be overkill or could somehow break the program? not realy sure
+//delete this; // this might be overkill or could somehow break the program? not realy sure
 }
 
 
@@ -175,6 +181,7 @@ void AccountList::logIn() {
 	std::cin >> pass;
 	if (userPointer->getPassword() != pass) {std::cout << "password invalid, terminating"; return;}
 	userPointer->Menu();
+	userPointer = nullptr;
 }
 
 void AccountList::adminMenu() {
@@ -192,12 +199,3 @@ void AccountList::adminMenu() {
 	return;
 
 }
-
-void AccountList::logOut() {
-	// is called by account history proxy logout function
-	// unset user pointer
-	userPointer = NULL;
-	// re call the log in prompt
-	interface(); // TODO: verify the function of the interface and how we should return to it after we finish loggiing out  
-}
-

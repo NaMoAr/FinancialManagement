@@ -285,3 +285,5 @@ void SavingAccountProxy::Menu(){
                 cout << "You have logged out successfully" << endl;  
             }
 }
+
+char SavingAccountProxy::whatType () {return's';} //helper function so the list can detemine account type

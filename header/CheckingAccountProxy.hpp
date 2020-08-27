@@ -16,6 +16,7 @@ private:
 	CheckingAccount* ptr;
 	stringstream s;
         double monthlyHomeRent = 0.0; 
+	char type = 'c';
 public:
         CheckingAccountProxy(){};
 	CheckingAccountProxy(double initialBalance, int userID, string pass, double homeRent);
@@ -33,7 +34,7 @@ public:
         void setMonthlyHomeRent(double homeRent);
         double getMonthlyHomeRent();
 	void Menu();
-
+	char whatType();
 
 
 };

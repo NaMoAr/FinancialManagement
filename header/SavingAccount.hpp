@@ -17,6 +17,7 @@ class SavingAccount : public Account
 private:
 	int stockNum = 0;
 	double stockPrice = 0.0;
+	
 public:
 	
 	SavingAccount(double initialBalance, int userID,string pass, int stochShareNum, double stockSharePrice);
@@ -32,6 +33,7 @@ public:
 	double getStockNum();
 	void setStockPrice(double stockSharePrice);
 	double getStockPrice();
+	char whatType();
 };
 
 

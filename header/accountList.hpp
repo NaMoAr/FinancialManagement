@@ -24,8 +24,9 @@ class AccountList {
 	
 		Account* userPointer = nullptr; // this pointer holds the account we are logged into, this is useful when saving individual account data.
 	
-		vector<UserInfo*> objects; // a vector that holds pointers to objects that save the database in different filetypes, to be populated in .cpp
-
+		CSVSave* rTwo; // a vector that holds pointers to objects that save the database in different filetypes, to be populated in .cpp
+		TXTSave* rOne;
+	
 		std::string adminAccess = "96a~eU=tWyVkz'4V"; // a randomly generated 16 character password to verify an admin before allowing access to admin functions TODO: !!BEYOND THE SCOPE OF THIS VERSION OF THE PROJECT!! use a tool to periodicall generate a new admin access code which is available only to the administrator.
 
 		void adminMenu(); // a function that helps admins navigate creation and destruction of accounts					Accessed by interface
@@ -48,7 +49,7 @@ class AccountList {
 
 		void interface(); // the public interface that allows a user to log in or quit the program					MUST BE PUBLIC
 
-		void logOut(); // unsets the user pointer and reprompts log in									MUST BE PUBLIC - called by proxy
+		
 
 		int size(); //test function to verifgy size of the list
 };

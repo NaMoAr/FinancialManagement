@@ -230,3 +230,5 @@ void CheckingAccountProxy::Menu(){
                 cout << "You have logged out successfully" << endl;
             }
 }
+
+char CheckingAccountProxy::whatType() {return 'c';} // helper function so the list can see type 
