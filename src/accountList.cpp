@@ -162,7 +162,7 @@ void AccountList::logIn() {
 	std::cout << "Enter Password" << endl;
 	std::cin >> pass;
 	if (userPointer->getPassword() != pass) {std::cout << "password invalid, terminating"; return;}
-	//userPointer->Menu(); // TODO najmeh must write her interface function;
+	userPointer->Menu();
 }
 
 void AccountList::adminMenu() {

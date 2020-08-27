@@ -32,7 +32,7 @@ public:
 	int getID();
         void setMonthlyHomeRent(double homeRent);
         double getMonthlyHomeRent();
-
+	void Menu();
 
 
 

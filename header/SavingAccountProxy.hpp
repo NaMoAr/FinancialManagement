@@ -39,6 +39,7 @@ public:
    	double getStockPrice();
 	double fetchStockPrice();
 	double calculateProfit();
+	void Menu();
 };
 
 #endif // CHECKINGACCOUNTPROXY_HPP

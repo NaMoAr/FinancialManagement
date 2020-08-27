@@ -32,7 +32,6 @@ public:
 	double getStockNum();
 	void setStockPrice(double stockSharePrice);
 	double getStockPrice();
-
 };
 
 

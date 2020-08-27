@@ -224,5 +224,64 @@ int SavingAccountProxy::getID()
 	return ptr->getID();
 }
 
+// calls menu function to allow user access to class functions
+void SavingAccountProxy::Menu(){
+ string option = "";
+    double dep = 0.0;
+    double with = 0.0;
+    stringstream* ss = nullptr;
+    string accountType = "";
+    string pass = "";
 
-
+	do {           
+            cout << "1.Balance" << endl;
+            cout << "2.deposit" << endl;
+            cout << "3.withdraw" << endl;
+            cout << "4.Account History" << endl;
+            cout << "5.My Stock Shares" << endl;
+            cout << "6.See My Current Profit" << endl;
+            cout << "7.Sell Stock Share" << endl;
+            cout << "8.Buy Stock Share" << endl;
+            cout << "9.Change Password" << endl;
+            cout << "10.logout" << endl;
+            cin >> option;
+            if (option == "1") {
+                cout << "$" << getBalance() << endl;
+            }
+            if (option == "2") {
+                cout << "How much do you want to deposit?" << endl;
+                cin >> dep;
+                ss = deposit(dep);
+            }
+            if (option == "3") {
+                cout << "How much do you want to withdraw?" << endl;
+                cin >> with;
+                ss = withdraw(with);
+            }
+            if (option == "4") {
+                accountHistory();
+            }
+            if (option == "5") {
+                cout << getStockNum() << " stock share/shares of $" << getStockPrice() << endl;
+            }
+            if (option == "6") {
+		 cout << "$" << calculateProfit() << endl;
+            }
+            if (option == "7") {
+                ss = sellStock();
+            }
+            if (option == "8") {
+                ss = buyStock();
+            }
+            if (option == "9") {
+                cout << "Please enter your new password" << endl;
+                cin >> pass;
+                setPassword(pass);
+                cout << "Your password has been changed to " << getPassword() << endl;
+            }
+        } while (option != "10");
+            if (option == "10") {
+                logOut(ss);// call container logout
+                cout << "You have logged out successfully" << endl;  
+            }
+}

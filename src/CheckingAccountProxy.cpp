@@ -159,3 +159,66 @@ string CheckingAccountProxy::getPassword()
 	return ptr->getPassword();
 }
 
+// allows users to interfgace with class functions
+void CheckingAccountProxy::Menu(){
+ string option = "";
+        double dep = 0.0;
+        double with = 0.0;
+        stringstream* ss = nullptr;
+        string accountType = "";
+        string pass = "";
+
+        do {
+              cout << "1.Balance" << endl;
+              cout << "2.deposit" << endl;
+              cout << "3.withdraw" << endl;
+              cout << "4.Account History" << endl;
+              cout << "5.budget planning" << endl;
+              cout << "6.Change Password" << endl;
+              cout << "7.logout" << endl;
+              cin >> option;
+              if (option == "1") {
+                     cout << "$" << getBalance() << endl;
+              }
+              if (option == "2") {
+	          cout << "How much do you want to deposit?" << endl;
+	          cin >> dep;
+	          ss = deposit(dep); //not implemented??
+              }
+              if (option == "3") {
+                  cout << "How much do you want to withdraw?" << endl;
+                  cin >> with;
+                  ss = withdraw(with); // not implemented??
+              }
+              if (option == "4") {
+                   accountHistory();
+              }
+              if (option == "5") {
+                    string bp = "";
+                    double monthlyHomeRent = 0.0;
+                    cout << "1.Update monthly home rent" << endl;
+                    cout << "2.Current monthly home rent" << endl;
+                    cin >> bp;
+
+                    if (bp == "1") {
+                            cout << "How much is your monthly home rent?" << endl;
+                            cin >> monthlyHomeRent;
+                            setMonthlyHomeRent(monthlyHomeRent);
+                    }
+	    	    if (bp == "2") {
+                            cout << "$" << getMonthlyHomeRent() << endl;
+                    }
+              }
+              if (option == "6") {
+                  cout << "Please enter your new password" << endl;
+                  cin >> pass;
+                  setPassword(pass);
+                  cout << "Your password has been changed to " << getPassword() << endl;
+              }
+        }while(option != "7");
+            if (option == "7") {
+                logOut(ss);
+		// call container logout
+                cout << "You have logged out successfully" << endl;
+            }
+}

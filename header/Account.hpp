@@ -25,9 +25,9 @@ public:
  virtual void setBalance(double bl) = 0;
  virtual double getBalance() = 0;
  virtual void setPassword(string pass) = 0;
- virtual string getPassword() = 0 ;
- virtual int getID() = 0 ;
-
+ virtual string getPassword() = 0;
+ virtual int getID() = 0;
+ virtual void Menu() {};
 
 };
 
