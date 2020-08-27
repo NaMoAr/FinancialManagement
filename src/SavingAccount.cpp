@@ -36,7 +36,7 @@ SavingAccount::~SavingAccount()
 void SavingAccount::logOut(stringstream* ss)
 {
 	string id = to_string(userID);
-	string filename = id + ".txt";
+	string filename ="histories/"+ id + ".txt";
 	std::fstream f;
 	f.open(filename, std::fstream::in | std::fstream::out | std::fstream::app );
 	if (ss != nullptr) {
@@ -54,7 +54,7 @@ bool SavingAccount::accountHistory()
 	cout << "Today's transactions would appear in the account history the next day after the bank approval." << endl;
 
 	string id = to_string(userID);
-	string filename = id + ".txt";
+	string filename ="histories/"+ id + ".txt";
 	std::fstream f;
 	f.open(filename);
 	if (!f) {
