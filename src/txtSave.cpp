@@ -1,10 +1,5 @@
 #include "../header/txtSave.hpp"
 
-TXTSave::~TXTSave() {
-	UserInfo* u = new TXTSave();
-	u->PrintList();
-//Called upon program termination to write out everything in the vectors to the TXT file
-}
 
 void TXTSave::PrintList() {
 	ofstream outFS("files/UserInfo.txt");
