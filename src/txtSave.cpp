@@ -67,10 +67,10 @@ vector<vector<string>> TXTSave::ReadList() {
 		funds.push_back(t);
 		getline(inFS, t);
 		stock.push_back(t);
-    getline(inFS, c);
+    		getline(inFS, c);
 	}
 
-  string s;
+/*  string s;
   for (int i = 0; i < id.size(); ++i) {
     s = acType.at(i);
     cout << s << " ";
@@ -84,7 +84,7 @@ vector<vector<string>> TXTSave::ReadList() {
     cout << s << " ";
     s = stock.at(i);
     cout << s << " " << endl;
-  }
+  } */
 
 	inFS.close();
 
