@@ -35,13 +35,13 @@ Used to save the information of each account into a variety of files. One will b
 
 ## Class Diagram
 
-![Final_OMT](https://user-images.githubusercontent.com/59351131/91477449-378ae300-e853-11ea-930d-e272caf565bd.png)
+![Final_OMT](https://user-images.githubusercontent.com/56089475/91478566-f398dd80-e854-11ea-99cc-6cdc4fab1813.png)
 
 ![Proxy](https://user-images.githubusercontent.com/59351131/91477564-60ab7380-e853-11ea-84f1-8e6d1f8764c0.png)
 
 ![Singleton](https://github.com/dchan066-862012834/CS100_Final_Project/blob/main/UML3.PNG)
 
-![Strategy OMT](https://user-images.githubusercontent.com/56089475/91352285-7b6fe080-e79e-11ea-81c8-16711ae11d11.png)
+![Strategy OMT](https://user-images.githubusercontent.com/56089475/91478564-f1cf1a00-e854-11ea-80d7-b76214e9a9dc.png)
 
  
  > ## Final deliverable
