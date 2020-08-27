@@ -41,7 +41,7 @@ AccountList::AccountList (TXTSave* object1, CSVSave* Object2) { // we assume tha
 AccountList::~AccountList() { //TODO Get this working
 // call Chloe's class to write the account data to the database file
 
-
+cout << "we have reached the end times" <<endl;
 // delete all pointers in the hash map
 	for (auto OBJECT : objects){
 		int i = 1; //NOTE
@@ -84,6 +84,7 @@ void AccountList::interface() {
 	if (temp == '2')logIn();
 	if (temp != '3')interface();
 	// final saves to the file calling chloes stuff?
+	delete this;
 	return;
 	
 }
