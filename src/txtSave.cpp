@@ -8,7 +8,7 @@ TXTSave::~TXTSave() {
 }
 
 void TXTSave::PrintList() {
-	ofstream outFS("UserInfo.txt");
+	ofstream outFS("files/UserInfo.txt");
 	if (!outFS.is_open()) {
 		cout << "Error! Cannot open TXT file for reading out" << endl;
 	}
@@ -51,8 +51,7 @@ vector<vector<string>> TXTSave::ReadList() {
 	vector<vector<string>> v;
 	string t;
 	string c;
-	string temp = "UserInfo.txt";
-	ifstream inFS(temp);
+	ifstream inFS("files/UserInfo.txt");
 	if (!inFS.is_open()) {	
 		cout << "Error! Cannot open "<<temp <<" for reading in" << endl;
 	}
