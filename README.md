@@ -46,8 +46,8 @@ Used to save the information of each account into a variety of files. One will b
  
  > ## Final deliverable
  ## Screenshots
- > Screenshots of the input/output after running your application
+At this time the project cannot change the input/output file, coming sprints are geared to fixing file IO so this section can be filled in
  ## Installation/Usage
- > Instructions on installing and running your application
+ Copy Code from the repository. Run cmake and make to compile the program. To use the program run the executable and follow the instructions in the interface provided
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+ Integrated testing is not yet finished. Once the program works completely from a UI perspective time will be spent integrating and re-verifying the individual test suites which can be found in branches dchan066/devtesting NaMoAr/development and loveechloee/development.
