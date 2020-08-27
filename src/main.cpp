@@ -1,5 +1,3 @@
-// all proper includes
-#include"../header/userInfo.hpp"
 #include"../header/csvSave.hpp"
 #include"../header/txtSave.hpp"
 #include"../header/accountList.hpp"
@@ -12,8 +10,8 @@
 int main() {
 
 	// make the userinfo objects
-	TXTSave* readerOne =  new TXTSave();
-	CSVSave* readerTwo =  new CSVSave();
+	UserInfo* readerOne =  new TXTSave();
+	UserInfo* readerTwo =  new CSVSave();
 	// make the list with userinfo objects as parametsrs
 	AccountList* DATABASE = DATABASE->GetInstance(readerOne, readerTwo);
 	// call list interface
@@ -21,6 +19,6 @@ int main() {
 	// program ends
 
 
-
+  return 0;
 
 }// as the program ends readerOne readerTwo and DATABASE pass out of scope and their desturctors are called which handle the desruction of the objects they contain
