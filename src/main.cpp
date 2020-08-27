@@ -1,3 +1,4 @@
+// all proper includes
 #include"../header/csvSave.hpp"
 #include"../header/txtSave.hpp"
 #include"../header/accountList.hpp"
@@ -19,6 +20,6 @@ int main() {
 	// program ends
 
 
-  return 0;
+
 
 }// as the program ends readerOne readerTwo and DATABASE pass out of scope and their desturctors are called which handle the desruction of the objects they contain
