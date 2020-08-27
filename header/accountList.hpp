@@ -24,8 +24,8 @@ class AccountList {
 	
 		Account* userPointer = nullptr; // this pointer holds the account we are logged into, this is useful when saving individual account data.
 	
-		CSVSave* rTwo; // a vector that holds pointers to objects that save the database in different filetypes, to be populated in .cpp
-		TXTSave* rOne;
+		UserInfo* rTwo; // a vector that holds pointers to objects that save the database in different filetypes, to be populated in .cpp
+		UserInfo* rOne;
 	
 		std::string adminAccess = "96a~eU=tWyVkz'4V"; // a randomly generated 16 character password to verify an admin before allowing access to admin functions TODO: !!BEYOND THE SCOPE OF THIS VERSION OF THE PROJECT!! use a tool to periodicall generate a new admin access code which is available only to the administrator.
 
