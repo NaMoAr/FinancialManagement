@@ -13,7 +13,7 @@ AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume t
   rOne = object1;
   rTwo = Object2;
 
-        std::vector< std::vector<string> >::const_iterator row;
+  std::vector< std::vector<string> >::const_iterator row;
 
   vector<vector<string>> v = object1->ReadList();
 
