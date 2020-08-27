@@ -17,30 +17,65 @@ TEST(SavginAccountProxyTest, Constructor){
      EXPECT_EQ(sap->getStockPrice(), 51);
   }
 
-TEST(SavingAccountProxyTest, SetBalance){
+TEST(SavingAccountProxyTest, SetBalanceNegative){
+ 
+     sap->setBalance(-700);
+     EXPECT_EQ(sap->getBalance(), -700);
+}
+TEST(SavingAccountProxyTest, SetBalanceZero){
+
+     sap->setBalance(0);
+     EXPECT_EQ(sap->getBalance(), 0);
+}
+TEST(SavingAccountProxyTest, SetBalancePositive){
  
      sap->setBalance(700);
      EXPECT_EQ(sap->getBalance(), 700);
 }
 
-TEST(SavingAccountProxyTest, SetPassword){
+TEST(SavingAccountProxyTest, SetPasswordNonEmpty){
 
     sap->setPassword("1111");
     EXPECT_EQ(sap->getPassword(), "1111");
 }
-
-
-TEST(SavingAccountProxyTest, SetStockNum){
+TEST(SavingAccountProxyTest, SetPasswordEmpty){
  
-     sap->setStockNum(5);
-     EXPECT_EQ(sap->getStockNum(), 5);
-  }
+    sap->setPassword("");
+    EXPECT_EQ(sap->getPassword(), "");
+}
 
-TEST(SavingAccountProxyTest, SetStockPrice){
+
+TEST(SavingAccountProxyTest, SetStockNumNegative){
+ 
+     sap->setStockNum(-5);
+     EXPECT_EQ(sap->getStockNum(), -5);
+}
+TEST(SavingAccountProxyTest, SetStockNumZero){
+ 
+    sap->setStockNum(0);
+    EXPECT_EQ(sap->getStockNum(), 0);
+}
+TEST(SavingAccountProxyTest, SetStockNumPositive){
+ 
+   sap->setStockNum(5);
+   EXPECT_EQ(sap->getStockNum(), 5);
+}
+
+TEST(SavingAccountProxyTest, SetStockPriceNagative){
+     sap->setStockPrice(-57);
+     EXPECT_EQ(sap->getStockPrice(), -57);
+ 
+}
+TEST(SavingAccountProxyTest, SetStockPriceZero){
+     sap->setStockPrice(0);
+     EXPECT_EQ(sap->getStockPrice(), 0);
+
+}
+TEST(SavingAccountProxyTest, SetStockPricePositive){
      sap->setStockPrice(57);
      EXPECT_EQ(sap->getStockPrice(), 57);
- 
-  }
+
+}
 
 TEST(SavingAccountProxyTest, FetchStockPrice ){
 
@@ -55,7 +90,35 @@ TEST(SavingAccountProxyTest, calculateProfit){
      double p2 = sap->calculateProfit();
      EXPECT_NE(p1 , p2); 
 }
- 
+TEST(SavingAccountProxy, depositNegative){
+    stringstream* ss = sap->deposit(-30);
+    EXPECT_EQ(sap->getBalance(),670);
+    EXPECT_NE(ss , nullptr);
+}
+TEST(SavingAccountProxy, depositZero){
+    stringstream* ss = sap->deposit(0);
+    EXPECT_EQ(sap->getBalance(),670);
+    EXPECT_NE(ss , nullptr);
+}
+TEST(SavingAccountProxy, depositPositive){
+    stringstream* ss = sap->deposit(30);
+    EXPECT_EQ(sap->getBalance(),700);
+    EXPECT_NE(ss , nullptr);
+}
+
+TEST(SavingAccountProxy, withdrawGTbalance){
+
+    stringstream* ss = sap->withdraw(800);
+    EXPECT_EQ(sap->getBalance(),700);
+    EXPECT_EQ(ss , nullptr);
+}
+TEST(SavingAccountProxy, withdrawLTbalance){
+
+    stringstream* ss = sap->withdraw(30);
+    EXPECT_EQ(sap->getBalance(),670);
+    EXPECT_NE(ss , nullptr);
+}
+
 TEST(SavingAccountzProxyTest, logOutWithNonEmptybuffer){
     stringstream s;
     stringstream* ss;
@@ -63,7 +126,7 @@ TEST(SavingAccountzProxyTest, logOutWithNonEmptybuffer){
     s << "Hello" << endl;
     ss = &s;
     sap->logOut(ss);
-    f.open("56780.txt");
+    f.open("histories/56780.txt");
     string st = "";
     char str[2000];
     if (cin.get() == '\n') {
@@ -85,7 +148,7 @@ TEST(SavingAccountProxyTest, logOutWithEmptybuffer){
     s << "" << endl;
     ss = &s;
     sap->logOut(ss);
-    f.open("56780.txt");
+    f.open("histories/56780.txt");
     string st = "";
     char str[2000];
     if (cin.get() == '\n') {
@@ -100,25 +163,12 @@ TEST(SavingAccountProxyTest, logOutWithEmptybuffer){
       EXPECT_EQ(st , "");
 }
 
-TEST(SavingAccountProxy, deposit){
-   stringstream* ss = sap->deposit(30);
-   EXPECT_EQ(sap->getBalance(),730);
-   EXPECT_NE(ss , nullptr);
-}
-
-TEST(SavingAccountProxy, withdraw){
- 
-    stringstream* ss = sap->withdraw(30);
-    EXPECT_EQ(sap->getBalance(),700);
-    EXPECT_NE(ss , nullptr);
-}
 
 TEST(SavingAccountProxyTest, accountHistory){
  
     EXPECT_EQ(sap->accountHistory(), true);
-    remove("56780.txt");
+    remove("histories/56780.txt");
     EXPECT_EQ(sap->accountHistory(), false);
- 
 }
 
 
