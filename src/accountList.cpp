@@ -120,7 +120,7 @@ void AccountList::createAccount () {
 	if (flag != 'c' && flag != 's'){
 		cout << "Account type invalid, terminating" << endl; return;
 	}
-	if (flag = 'c') {
+	if (flag == 'c') {
 		// construct and store a checking account object
 		CheckingAccountProxy* toAdd = new CheckingAccountProxy(value,ID,pass,0);
 		database->insert({ID, toAdd});
