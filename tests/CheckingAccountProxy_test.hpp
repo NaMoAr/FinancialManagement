@@ -89,7 +89,7 @@ TEST(CheckingAccountProxy, deposit){
 }
 
 TEST(CheckingAccountProxy, withdraw){
-
+  cap->setBalance(730);
   stringstream* ss = cap->withdraw(30);
   EXPECT_EQ(cap->getBalance(),700);
   EXPECT_NE(ss , nullptr);
