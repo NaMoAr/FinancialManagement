@@ -7,8 +7,7 @@ using namespace std;
 
 AccountList *AccountList::AccountList_ = 0;
  
-AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a neww
- database
+AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database
 // call Chloe's class to read the database file
  // NOTE: whenever a new file save type is added it must be included in the constructor and as a pushback here
   rOne = object1;
@@ -17,9 +16,6 @@ AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume t
         std::vector< std::vector<string> >::const_iterator row;
 
   vector<vector<string>> v = object1->ReadList();
-
-  //vector<vector<string>> v = {{"s","1","apple","12345.000000","5.000000","4"},{"c","2","banana","123456.000000","6.000000","0"},{"s","3","carrot","123456.000000",""
-6.000000","3"},{"c","4","donut","12345.000000","5.000000","0"},{"c","5","eggtart","123456.000000","7.000000","0"}};
 
   //cout << "read list" << endl;
 
@@ -31,29 +27,12 @@ AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume t
         //cout << "creating check" << endl;
       }
       else {
-        SavingAccountProxy* Temp = new SavingAccountProxy ( stod((v.at(3)).at(j)), stoi((v.at(1)).at(j)), (v.at(2)).at(j), stoi((v.at(5)).at(j)), stod((v.at(4)).at(jj
-)) );
+        SavingAccountProxy* Temp = new SavingAccountProxy ( stod((v.at(3)).at(j)), stoi((v.at(1)).at(j)), (v.at(2)).at(j), stoi((v.at(5)).at(j)), stod((v.at(4)).at(j)) );
         database->emplace( stoi((v.at(1)).at(j)), Temp );
         //cout << "creating save" << endl;
       }
     }
   }
-	  // if (!v.empty()){
-        //      for (int row = 0; row < v.size(); ++row) {
-        //              auto it = v.at(row);
-        //              if (it.at(0)== "c") {//checking entry
-  //       cout << "CHECK" << endl;
-        //                      CheckingAccountProxy* temp = new CheckingAccountProxy(stod(it.at(3)), stoi(it.at(1)), it.at(2),stod(it.at(4)));
-        //                      database->emplace(stoi(it.at(1)), temp);
-  //       cout << "creating check" << endl;
-        //              }
-        //              else {// otherwise saving entry
-  //       cout << "SAVINGS" << endl;
-        //                      SavingAccountProxy* Temp = new SavingAccountProxy(stod(it.at(3)), stoi(it.at(1)), it.at(2), stoi(it.at(5)), stod(it.at(4)));
-        //                      database->emplace(stoi(it.at(1)),Temp);
-  //       cout << "creating save" << endl;                                                                                                                                    //              }
-        //      }
-        // }
 }
 
 AccountList::~AccountList() { //TODO Get this working suffering out of range
