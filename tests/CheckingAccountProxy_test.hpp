@@ -15,24 +15,95 @@ TEST(CheckingAccountProxyTest, Constructor){
    EXPECT_EQ(cap->getPassword(),"1111");
    EXPECT_EQ(cap->getMonthlyHomeRent(), 350);
 }
+TEST(CheckingAccountProxyTest , setBalanceNegative){
  
-TEST(CheckingAccountProxyTest , setBalance){
+  cap->setBalance(-700);
+  EXPECT_EQ(cap->getBalance() , -700);
+}
+TEST(CheckingAccountProxyTest , setBalanceZero){
+ 
+  cap->setBalance(0);
+  EXPECT_EQ(cap->getBalance() , 0);
+}
+TEST(CheckingAccountProxyTest , setBalancePositive){
 
   cap->setBalance(700);
   EXPECT_EQ(cap->getBalance() , 700);
 }
 
-TEST(CheckingAccountProxyTest, SetPassword){
+
+TEST(CheckingAccountProxyTest, SetPasswordNonEmpty){
  
   cap->setPassword("2222");
   EXPECT_EQ(cap->getPassword(), "2222");
 }
+TEST(CheckingAccountProxyTest, SetPasswordEmpty){
+ 
+  cap->setPassword("");
+  EXPECT_EQ(cap->getPassword(), "");
+}
 
-
-TEST(CheckingAccountProxyTest, SetMonthlyHomeRent){
+TEST(CheckingAccountProxyTest, SetMonthlyHomeRentPositive){
  
   cap->setMonthlyHomeRent(450);
   EXPECT_EQ(cap->getMonthlyHomeRent(), 450);
+}
+TEST(CheckingAccountProxyTest, SetMonthlyHomeRentNegative){
+ 
+  cap->setMonthlyHomeRent(-450);
+  EXPECT_EQ(cap->getMonthlyHomeRent(), -450);
+}
+TEST(CheckingAccountProxyTest, SetMonthlyHomeRentZero){
+ 
+  cap->setMonthlyHomeRent(0);
+  EXPECT_EQ(cap->getMonthlyHomeRent(), 0);
+}
+TEST(CheckingAccountProxy, depositPositive){
+
+  stringstream* ss = cap->deposit(30);   
+  EXPECT_EQ(cap->getBalance(),730);
+  EXPECT_NE(ss , nullptr);
+}
+TEST(CheckingAccountProxy, depositNegative){
+
+  stringstream* ss = cap->deposit(-30);
+  EXPECT_EQ(cap->getBalance(),700);
+  EXPECT_NE(ss , nullptr);
+}
+TEST(CheckingAccountProxy, depositZero){
+
+  stringstream* ss = cap->deposit(0);
+  EXPECT_EQ(cap->getBalance(),700);
+  EXPECT_NE(ss , nullptr);
+}
+TEST(CheckingAccountProxy, withdrawPositiveLTbalance){
+
+  stringstream* ss = cap->withdraw(30);
+  EXPECT_EQ(cap->getBalance(),670);
+  EXPECT_NE(ss , nullptr);
+
+}
+TEST(CheckingAccountProxy, withdrawPositiveGTbalance){
+ 
+   stringstream* ss = cap->withdraw(900);
+   EXPECT_EQ(cap->getBalance(),670);
+   EXPECT_EQ(ss , nullptr);
+
+}
+
+TEST(CheckingAccountProxy, withdrawNegative){
+
+  stringstream* ss = cap->withdraw(30);
+  EXPECT_EQ(cap->getBalance(),640);
+  EXPECT_NE(ss , nullptr);
+
+}
+TEST(CheckingAccountProxy, withdrawZero){
+ 
+  stringstream* ss = cap->withdraw(0);
+  EXPECT_EQ(cap->getBalance(),640);
+  EXPECT_NE(ss , nullptr);
+
 }
 
  
@@ -43,7 +114,7 @@ TEST(CheckingAccountzProxyTest, logOutWithNonEmptybuffer){
    s << "Hello" << endl;
    ss = &s;
    cap->logOut(ss);
-   f.open("12340.txt");
+   f.open("histories/12340.txt");
    string st = "";
    char str[2000];
    if (cin.get() == '\n') {
@@ -66,7 +137,7 @@ TEST(CheckingAccountProxyTest, logOutWithEmptybuffer){
    s << "" << endl;
    ss = &s;
    cap->logOut(ss);
-   f.open("12340.txt");
+   f.open("histories/12340.txt");
    string st = "";
    char str[2000];
    if (cin.get() == '\n') {
@@ -81,25 +152,11 @@ TEST(CheckingAccountProxyTest, logOutWithEmptybuffer){
      EXPECT_EQ(st , "");
 }
 
-TEST(CheckingAccountProxy, deposit){
-    
-  stringstream* ss = cap->deposit(30);
-  EXPECT_EQ(cap->getBalance(),730);
-  EXPECT_NE(ss , nullptr);
-}
-
-TEST(CheckingAccountProxy, withdraw){
-  cap->setBalance(730);
-  stringstream* ss = cap->withdraw(30);
-  EXPECT_EQ(cap->getBalance(),700);
-  EXPECT_NE(ss , nullptr);
-
-}
 
 TEST(CheckingAccountProxyTest, accountHistory){
  
     EXPECT_EQ(cap->accountHistory(), true);
-    remove("12340.txt");
+    remove("histories/12340.txt");
     EXPECT_EQ(cap->accountHistory(), false);
 }
 
