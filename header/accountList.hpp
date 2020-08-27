@@ -4,7 +4,8 @@
 #include <unordered_map>
 #include <string>
 #include <iostream>
-#include "userInfo.hpp"
+#include "csvSave.hpp"
+#include "txtSave.hpp"
 #include "CheckingAccountProxy.hpp"
 #include "SavingAccountProxy.hpp"
 
@@ -15,7 +16,7 @@ class AccountList {
 		
 		static AccountList* AccountList_; // we hold the pointer to the object This is supposed to be static but will not compile when it is, readon unkown
 
-		AccountList(UserInfo* readerOne,UserInfo* readerTwo); // must be private so we control the instantiation of new objects of this type to maintain the singleton design pcattern
+		AccountList(TXTSave* readerOne,CSVSave* readerTwo); // must be private so we control the instantiation of new objects of this type to maintain the singleton design pcattern
 		
 		~AccountList(); // kept private to ensure that the object is only destroyed on shut down
 
@@ -43,7 +44,7 @@ class AccountList {
 
 		void operator= (const AccountList &) = delete; // we con't let the object be assignable						MUST BE PUBLIC
 	
-		AccountList* GetInstance(UserInfo*,UserInfo*); // the public interface which creates  AccountList object		MUST BE PUBLIC
+		AccountList* GetInstance(TXTSave*,CSVSave*); // the public interface which creates  AccountList object		MUST BE PUBLIC
 
 		void interface(); // the public interface that allows a user to log in or quit the program					MUST BE PUBLIC
 

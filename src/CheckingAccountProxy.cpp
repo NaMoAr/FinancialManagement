@@ -76,6 +76,14 @@ stringstream* CheckingAccountProxy::withdraw(double withMoney)
 		}
 
 	}
+	else {
+		balance = getBalance() - withMoney;
+		s << "Checking account, $" << withMoney << " has been withdrawn, " << "New Balance: $" << balance << endl;
+		ss = &s;
+		cout << withMoney << " dollors has been withdrawn" << endl;
+		setBalance(balance);
+		return ss;
+	}
 }
 	
 
@@ -183,12 +191,12 @@ void CheckingAccountProxy::Menu(){
               if (option == "2") {
 	          cout << "How much do you want to deposit?" << endl;
 	          cin >> dep;
-	          ss = deposit(dep); //not implemented??
+	          ss = deposit(dep); 
               }
               if (option == "3") {
                   cout << "How much do you want to withdraw?" << endl;
                   cin >> with;
-                  ss = withdraw(with); // not implemented??
+                  ss = withdraw(with); 
               }
               if (option == "4") {
                    accountHistory();

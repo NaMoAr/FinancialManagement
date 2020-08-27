@@ -7,22 +7,33 @@ using namespace std;
 
 AccountList *AccountList::AccountList_ = 0;
  
-AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database 
+AccountList::AccountList (TXTSave* object1, CSVSave* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database 
 // call Chloe's class to read the database file
 	AccountList_ = this;
 	objects.push_back(object1);
 	objects.push_back(Object2); // NOTE: whenever a new file save type is added it must be included in the constructor and as a pushback here
-	auto v = object1->ReadList();
-	std::vector< std::vector<string> >::const_iterator row;  
- 	for (int row = 0; row < v.size(); ++row) {
-		auto it = v.at(row);
-		if (it.at(0)== "c") {//checking entry
-			CheckingAccountProxy* temp = new CheckingAccountProxy(std::stod(it.at(1)), std::stoi(it.at(3)), it.at(2),std::stoi(it.at(4)));
-			database->emplace(std::stoi(it.at(3)), temp); 
-		}	
-		else {// otherwise saving entry
-			SavingAccountProxy* Temp = new SavingAccountProxy(std::stod(it.at(1)), std::stoi(it.at(3)), it.at(2),std::stoi(it.at(4)),std::stod(it.at(5)));
-			database->emplace(std::stoi(it.at(3)),Temp);
+	//vector<vector<string>> v = object1->ReadList();
+	
+
+
+	vector<vector<string>> v = {{"s","1","apple","12345","5","4"},{"c","2","banana","123456","6","0"},{"s","3","carrot","123456","6","3"},{"c","4","donut","12345","5","0"},{"c","5","eggtart","123456","7","0"}};
+
+
+
+
+	cout << "list read" << endl;
+	std::vector< std::vector<string> >::const_iterator row;
+	if (!v.empty()){
+ 		for (int row = 0; row < v.size(); ++row) {
+			auto it = v.at(row);
+			if (it.at(0)== "c") {//checking entry
+				CheckingAccountProxy* temp = new CheckingAccountProxy(std::stod(it.at(3)), std::stoi(it.at(1)), it.at(2),std::stoi(it.at(4)));
+				database->emplace(std::stoi(it.at(1)), temp); cout << "creating check" << endl; 
+			}	
+			else {// otherwise saving entry
+				SavingAccountProxy* Temp = new SavingAccountProxy(std::stod(it.at(3)), std::stoi(it.at(1)), it.at(2),std::stoi(it.at(4)),std::stod(it.at(5)));
+				database->emplace(std::stoi(it.at(1)),Temp); cout << "creating save" << endl;
+			}
 		}
 	} 
 }
@@ -57,7 +68,7 @@ delete this; // this might be overkill or could somehow break the program? not r
 }
 
 
-AccountList* AccountList::GetInstance(UserInfo* one, UserInfo* two) {
+AccountList* AccountList::GetInstance(TXTSave* one, CSVSave* two) {
 // check to see if an accountlist exists, if so return it 
 	if (AccountList_==nullptr) AccountList_ = new AccountList(one,two);
 	return AccountList_;
