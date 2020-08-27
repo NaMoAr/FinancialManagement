@@ -84,7 +84,7 @@ AccountList* AccountList::GetInstance(TXTSave* one, CSVSave* two) {
 
 void AccountList::interface() {
 	char temp = '4';
-	std::cout << "Welcome to the financial planning and stock management account access tool" << endl << "to access administrator functions enter '1',"<< endl <<" to log in to a user account enter '2' "<<endl<< "to quit the program enter '3' " << endl;
+	std::cout << "Welcome to the financial planning and stock management account access tool" << endl << "to access administrator functions enter '1',"<< endl <<"to log in to a user account enter '2' "<<endl<< "to quit the program enter '3' " << endl;
 	std::cin >> temp;
 	if (temp == '1')adminMenu();
 	if (temp == '2')logIn();
@@ -175,11 +175,11 @@ void AccountList::logIn() {
 	// scan list for ID returning null on a fail to find and print "account not found"
 	userPointer = traverseDatabase(ID);
 	// compare Password returning the account pointer on a match and null on a mismatch, in the fail case print "password incorrect" 
-	if (userPointer == nullptr) {std::cout<<"account not found, terminating"; return;}
+	if (userPointer == nullptr) {std::cout<<"account not found, terminating"<<endl; return;}
 	// prompt  Password
 	std::cout << "Enter Password" << endl;
 	std::cin >> pass;
-	if (userPointer->getPassword() != pass) {std::cout << "password invalid, terminating"; return;}
+	if (userPointer->getPassword() != pass) {std::cout << "password invalid, terminating"<<endl; return;}
 	userPointer->Menu();
 	userPointer = nullptr;
 }
