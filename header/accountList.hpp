@@ -4,7 +4,8 @@
 #include <unordered_map>
 #include <string>
 #include <iostream>
-#include "userInfo.hpp"
+#include "csvSave.hpp"
+#include "txtSave.hpp"
 #include "CheckingAccountProxy.hpp"
 #include "SavingAccountProxy.hpp"
 
@@ -15,7 +16,7 @@ class AccountList {
 		
 		static AccountList* AccountList_; // we hold the pointer to the object This is supposed to be static but will not compile when it is, readon unkown
 
-		AccountList(UserInfo* readerOne,UserInfo* readerTwo); // must be private so we control the instantiation of new objects of this type to maintain the singleton design pcattern
+		AccountList(TXTSave* readerOne,CSVSave* readerTwo); // must be private so we control the instantiation of new objects of this type to maintain the singleton design pcattern
 		
 		~AccountList(); // kept private to ensure that the object is only destroyed on shut down
 
@@ -23,8 +24,9 @@ class AccountList {
 	
 		Account* userPointer = nullptr; // this pointer holds the account we are logged into, this is useful when saving individual account data.
 	
-		vector<UserInfo*> objects; // a vector that holds pointers to objects that save the database in different filetypes, to be populated in .cpp
-
+		CSVSave* rTwo; // a vector that holds pointers to objects that save the database in different filetypes, to be populated in .cpp
+		TXTSave* rOne;
+	
 		std::string adminAccess = "96a~eU=tWyVkz'4V"; // a randomly generated 16 character password to verify an admin before allowing access to admin functions TODO: !!BEYOND THE SCOPE OF THIS VERSION OF THE PROJECT!! use a tool to periodicall generate a new admin access code which is available only to the administrator.
 
 		void adminMenu(); // a function that helps admins navigate creation and destruction of accounts					Accessed by interface
@@ -43,11 +45,11 @@ class AccountList {
 
 		void operator= (const AccountList &) = delete; // we con't let the object be assignable						MUST BE PUBLIC
 	
-		AccountList* GetInstance(UserInfo*,UserInfo*); // the public interface which creates  AccountList object		MUST BE PUBLIC
+		AccountList* GetInstance(TXTSave*,CSVSave*); // the public interface which creates  AccountList object		MUST BE PUBLIC
 
 		void interface(); // the public interface that allows a user to log in or quit the program					MUST BE PUBLIC
 
-		void logOut(); // unsets the user pointer and reprompts log in									MUST BE PUBLIC - called by proxy
+		
 
 		int size(); //test function to verifgy size of the list
 };

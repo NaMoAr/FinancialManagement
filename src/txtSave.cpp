@@ -51,10 +51,9 @@ vector<vector<string>> TXTSave::ReadList() {
 	vector<vector<string>> v;
 	string t;
 	string c;
-	
 	ifstream inFS("../files/UserInfo.txt");
 	if (!inFS.is_open()) {	
-		cout << "Error! Cannot open TXT file for reading in" << endl;
+		cout << "Error! Cannot open file for reading in" << endl;
 	}
 
 	while (getline(inFS, t)) {

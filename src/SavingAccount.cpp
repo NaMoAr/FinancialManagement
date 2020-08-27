@@ -147,3 +147,5 @@ double SavingAccount::getBalance()
 {
 	return balance;
 }
+
+char SavingAccount::whatType() {return'S';} // helper function to help the list determin account types for stroragevchar whatType() {return'C'} // helper function to help the list determin account types for strorage

@@ -7,57 +7,74 @@ using namespace std;
 
 AccountList *AccountList::AccountList_ = 0;
  
-AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database 
+AccountList::AccountList (TXTSave* object1, CSVSave* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database 
+//TODO suffering out of range
 // call Chloe's class to read the database file
 	AccountList_ = this;
-	objects.push_back(object1);
-	objects.push_back(Object2); // NOTE: whenever a new file save type is added it must be included in the constructor and as a pushback here
-	auto v = object1->ReadList();
-	std::vector< std::vector<string> >::const_iterator row;  
- 	for (int row = 0; row < v.size(); ++row) {
-		auto it = v.at(row);
-		if (it.at(0)== "c") {//checking entry
-			CheckingAccountProxy* temp = new CheckingAccountProxy(std::stod(it.at(1)), std::stoi(it.at(3)), it.at(2),std::stoi(it.at(4)));
-			database->emplace(std::stoi(it.at(3)), temp); 
-		}	
-		else {// otherwise saving entry
-			SavingAccountProxy* Temp = new SavingAccountProxy(std::stod(it.at(1)), std::stoi(it.at(3)), it.at(2),std::stoi(it.at(4)),std::stod(it.at(5)));
-			database->emplace(std::stoi(it.at(3)),Temp);
+	rOne = object1;
+	rTwo = Object2; // NOTE: whenever a new file save type is added it must be included in the constructor and as a pushback here
+	//vector<vector<string>> v = rOne->ReadList();
+	
+	// vector<vector<string>> v  = {};
+
+	vector<vector<string>> v = {{"s","1","apple","12345","5","4"},{"c","2","banana","123456","6","0"},{"s","3","carrot","123456","6","3"},{"c","4","donut","12345","5","0"},{"c","5","eggtart","123456","7","0"}};
+
+
+
+
+	cout << "list read" << endl;
+	std::vector< std::vector<string> >::const_iterator row;
+	if (!v.empty()){
+ 		for (int row = 0; row < v.size(); ++row) {
+			auto it = v.at(row);
+			if (it.at(0)== "c") {//checking entry
+				CheckingAccountProxy* temp = new CheckingAccountProxy(std::stod(it.at(3)), std::stoi(it.at(1)), it.at(2),std::stoi(it.at(4)));
+				database->emplace(std::stoi(it.at(1)), temp); cout << "creating check" << endl; 
+			}	
+			else {// otherwise saving entry
+				SavingAccountProxy* Temp = new SavingAccountProxy(std::stod(it.at(3)), std::stoi(it.at(1)), it.at(2),std::stoi(it.at(4)),std::stod(it.at(5)));
+				database->emplace(std::stoi(it.at(1)),Temp); cout << "creating save" << endl;
+			}
 		}
 	} 
 }
 
-AccountList::~AccountList() { //TODO Get this working
+AccountList::~AccountList() { //TODO Get this working suffering out of range
 // call Chloe's class to write the account data to the database file
 
-
+//cout << "we have reached the end times" <<endl;
 // delete all pointers in the hash map
-	for (auto OBJECT : objects){
-		int i = 1; //NOTE
-		
-		while (!database->empty()) {
-			
-			 auto x = database->at(i);
+		int i = 1;
+		int max = database->size();
+		while (i <= max) {
+	cout << "i is: " << i <<endl;		
+			cout << "we have "<<database->size()-i <<" more accounts to log" << endl;
+			auto x = database->at(i);
 			i++;
-			if (typeid(x).name() == "CheckingAccountProxy"){
+			cout << x->whatType()<< endl;
+			if (x->whatType() == 'c'){
+				cout << "submitting a checking account to save" << endl;
 				CheckingAccountProxy* y = dynamic_cast<CheckingAccountProxy*>(x);
-				OBJECT->SaveInfo("c",y->getID(), y->getPassword(), y->getBalance(), y->getMonthlyHomeRent()); 
+				cout <<"expect c: "<< y->whatType()<< endl;
+				rOne->SaveInfo("c",y->getID(), y->getPassword(), y->getBalance(), y->getMonthlyHomeRent());
+				rTwo->SaveInfo("c",y->getID(), y->getPassword(), y->getBalance(), y->getMonthlyHomeRent());		
 			}
-			if (typeid(x).name() == "SavingAccountProxy"){//		NOTE: testing can't support this request at this time, we'll fo it later
+			if (x->whatType() == 's'){//		NOTE: testing can't support this request at this time, we'll fo it later
+				cout << "submitting a saving account to save" << endl;
 				SavingAccountProxy* z = dynamic_cast<SavingAccountProxy*>(x);
-				OBJECT->SaveInfo("s",z->getID(), z->getPassword(), z->getBalance(), z->getStockNum(),z->getStockPrice() );
-
+				cout<<"expect s: " << z->whatType()<< endl;
+				rOne->SaveInfo("s",z->getID(), z->getPassword(), z->getBalance(), z->getStockNum(),z->getStockPrice() );
+				rTwo->SaveInfo("s",z->getID(), z->getPassword(), z->getBalance(), z->getStockNum(),z->getStockPrice() );
 			}
 			delete x;
+			
 
 		} //once objects in memory are deleted we can close the program
-	} // repeat for each type of save file
- 
-delete this; // this might be overkill or could somehow break the program? not realy sure
+//delete this; // this might be overkill or could somehow break the program? not realy sure
 }
 
 
-AccountList* AccountList::GetInstance(UserInfo* one, UserInfo* two) {
+AccountList* AccountList::GetInstance(TXTSave* one, CSVSave* two) {
 // check to see if an accountlist exists, if so return it 
 	if (AccountList_==nullptr) AccountList_ = new AccountList(one,two);
 	return AccountList_;
@@ -73,6 +90,7 @@ void AccountList::interface() {
 	if (temp == '2')logIn();
 	if (temp != '3')interface();
 	// final saves to the file calling chloes stuff?
+	delete this;
 	return;
 	
 }
@@ -162,7 +180,8 @@ void AccountList::logIn() {
 	std::cout << "Enter Password" << endl;
 	std::cin >> pass;
 	if (userPointer->getPassword() != pass) {std::cout << "password invalid, terminating"; return;}
-	//userPointer->Menu(); // TODO najmeh must write her interface function;
+	userPointer->Menu();
+	userPointer = nullptr;
 }
 
 void AccountList::adminMenu() {
@@ -180,12 +199,3 @@ void AccountList::adminMenu() {
 	return;
 
 }
-
-void AccountList::logOut() {
-	// is called by account history proxy logout function
-	// unset user pointer
-	userPointer = NULL;
-	// re call the log in prompt
-	interface(); // TODO: verify the function of the interface and how we should return to it after we finish loggiing out  
-}
-

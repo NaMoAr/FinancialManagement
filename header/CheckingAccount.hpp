@@ -27,6 +27,8 @@ public:
 	int getID();
 	void setMonthlyHomeRent(double homeRent);
 	double getMonthlyHomeRent();
+	char whatType();
+	
 };
 
 #endif // CHECKINGACCOUNT_HPP

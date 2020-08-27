@@ -17,6 +17,7 @@ private:
 	stringstream s;
         int stockNum = 0 ;
 	double stockPrice = 0.0;
+	char type = 's';
 public:
 	
 	SavingAccountProxy(double initialBalance, int userID,string pass, int stochShareNum, double stockSharePrice);
@@ -39,6 +40,8 @@ public:
    	double getStockPrice();
 	double fetchStockPrice();
 	double calculateProfit();
+	void Menu();
+	char whatType();
 };
 
 #endif // CHECKINGACCOUNTPROXY_HPP

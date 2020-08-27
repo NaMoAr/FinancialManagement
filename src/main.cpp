@@ -12,8 +12,8 @@
 int main() {
 
 	// make the userinfo objects
-	UserInfo* readerOne =  new TXTSave();
-	UserInfo* readerTwo =  new CSVSave();
+	TXTSave* readerOne =  new TXTSave();
+	CSVSave* readerTwo =  new CSVSave();
 	// make the list with userinfo objects as parametsrs
 	AccountList* DATABASE = DATABASE->GetInstance(readerOne, readerTwo);
 	// call list interface
