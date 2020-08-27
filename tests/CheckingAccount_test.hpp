@@ -14,10 +14,20 @@ TEST(CheckingAccountTest, Constructor){
   EXPECT_EQ(ca.getMonthlyHomeRent(), 350);
 }
 
-TEST(CheckingAccountTest, setBalance){
+TEST(CheckingAccountTest, setBalancePositive){
 
   ca.setBalance(600);
   EXPECT_EQ(ca.getBalance(), 600);
+}
+TEST(CheckingAccountTest, setBalanceZero){
+ 
+  ca.setBalance(0);
+  EXPECT_EQ(ca.getBalance(), 0);
+}
+TEST(CheckingAccountTest, setBalanceNegative){
+ 
+  ca.setBalance(-2);
+  EXPECT_EQ(ca.getBalance(), -2);
 }
 
 TEST(CheckingAccountTest, SetPassword){
@@ -25,12 +35,31 @@ TEST(CheckingAccountTest, SetPassword){
   ca.setPassword("2222");
   EXPECT_EQ(ca.getPassword(), "2222");
 }
+TEST(CheckingAccountTest, SetPasswordNonEmpty){
+ 
+  ca.setPassword("2222");
+  EXPECT_EQ(ca.getPassword(), "2222");
+}
+TEST(CheckingAccountTest, SetPasswordEmpty){
 
+  ca.setPassword("");
+  EXPECT_EQ(ca.getPassword(), "");
+}
 
-TEST(CheckingAccountTest, SetMonthlyHomeRent){
+TEST(CheckingAccountTest, SetMonthlyHomeRentPositive){
  
   ca.setMonthlyHomeRent(450);
   EXPECT_EQ(ca.getMonthlyHomeRent(), 450);
+}
+TEST(CheckingAccountTest, SetMonthlyHomeRentNegative){
+
+  ca.setMonthlyHomeRent(-30);
+  EXPECT_EQ(ca.getMonthlyHomeRent(), -30);
+}
+TEST(CheckingAccountTest, SetMonthlyHomeRentZero){
+ 
+  ca.setMonthlyHomeRent(0);
+  EXPECT_EQ(ca.getMonthlyHomeRent(), 0);
 }
 
 
