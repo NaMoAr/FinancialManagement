@@ -1,11 +1,5 @@
 #include "../header/csvSave.hpp"
 
-CSVSave::~CSVSave() {
-	UserInfo* u = new CSVSave();
-	u->PrintList();
-//When the program terminates, destructor calls PrintList to print the accounts into UserInfo.csv
-}
-
 void CSVSave::PrintList() {
 	ofstream outFS("files/UserInfo.csv");
 	if(!outFS.is_open()) {
