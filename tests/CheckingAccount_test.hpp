@@ -70,7 +70,7 @@ TEST(CheckingAccountTest, logOutWithNonEmptybuffer){
  s << "Hello" << endl;
  ss = &s;
  ca.logOut(ss);
- f.open("12340.txt");
+ f.open("histories/12340.txt");
  string st = "";
  char str[2000];
  if (cin.get() == '\n') {
@@ -94,7 +94,7 @@ TEST(CheckingAccountTest, logOutWithEmptybuffer){
   s << "" << endl;
   ss = &s;
   ca.logOut(ss);
-  f.open("12340.txt");
+  f.open("histories/12340.txt");
   string st = "";
   char str[2000];
   if (cin.get() == '\n') {
@@ -113,7 +113,7 @@ TEST(CheckingAccountTest, logOutWithEmptybuffer){
 TEST(CheckingAccountTest, accountHistory){
 
   EXPECT_EQ(ca.accountHistory(), true);
-  remove("12340.txt");
+  remove("histories/12340.txt");
   EXPECT_EQ(ca.accountHistory(), false);
    
 }
