@@ -1,0 +1,4 @@
+Checking account, $56 has been deposited, New Balance: $62
+Checking account, $56 has been deposited, New Balance: $118
+Checking account, $56 has been withdrawn, New Balance: $62
+Checking account, $5 has been withdrawn, New Balance: $57

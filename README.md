@@ -6,7 +6,11 @@
 
 This Financial Management Application is intended to help users keep track of their money, be it in a checking or savings account. Upon logging in, existing users have the option to view their balance, deposit or withdraw funds, create a projected savings goal for a checking account, and make a profit from the stock market using a saving account.
 To project savings goal for a checking account, the app would ask the user to confirm the transaction when he wants to withdraw money that makes the balance less than his monthly home rent. 
+<<<<<<< HEAD
+
+=======
  
+>>>>>>> master
 **Raison D'etre:**
 Finance management is an essential part of life for everyone. This app helps users to practice and plan their financial life by providing money management features that are consistent with their account balance.  Moreover, users are able to buy and sell the stock share and see their stock profit at any time. 
 
@@ -39,15 +43,23 @@ Strategy Design Pattern:
 ![Proxy](https://user-images.githubusercontent.com/59351131/91477564-60ab7380-e853-11ea-84f1-8e6d1f8764c0.png)
 
 ![Singleton](https://github.com/dchan066-862012834/CS100_Final_Project/blob/main/UMLF.PNG)
+<<<<<<< HEAD
 
 ![Strategy OMT](https://user-images.githubusercontent.com/56089475/91478564-f1cf1a00-e854-11ea-80d7-b76214e9a9dc.png)
 
- 
+=======
+
+![Strategy OMT](https://user-images.githubusercontent.com/56089475/91478564-f1cf1a00-e854-11ea-80d7-b76214e9a9dc.png)
+>>>>>>> master
+
  > ## Final deliverable
  ## Screenshots
 ![Screenshot (326)](https://user-images.githubusercontent.com/56089475/91605275-0d095a80-e925-11ea-9618-6bb2d776e427.png)
 This first image depicts how an administrator would sign in and create an account. 
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
 ![Screenshot (327)](https://user-images.githubusercontent.com/56089475/91605277-0da1f100-e925-11ea-9b3b-01e29cf7f85e.png)
 ![Screenshot (329)](https://user-images.githubusercontent.com/56089475/91605278-0e3a8780-e925-11ea-88d9-d5635ba36b22.png)
 ![accounthistory](https://user-images.githubusercontent.com/59351131/91610782-bf91eb00-e92e-11ea-823f-0765ea9c90d7.JPG)
