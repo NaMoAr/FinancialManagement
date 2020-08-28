@@ -46,10 +46,17 @@ Used to save the information of each account into a variety of files. One will b
  
  > ## Final deliverable
  ## Screenshots
-At this time the project cannot change the input/output file, coming sprints are geared to fixing file IO so this section can be filled in
+![Screenshot (326)](https://user-images.githubusercontent.com/56089475/91605275-0d095a80-e925-11ea-9618-6bb2d776e427.png)
+This first image depicts how an administrator would sign in and create an account. 
+
+![Screenshot (327)](https://user-images.githubusercontent.com/56089475/91605277-0da1f100-e925-11ea-9b3b-01e29cf7f85e.png)
+![Screenshot (329)](https://user-images.githubusercontent.com/56089475/91605278-0e3a8780-e925-11ea-88d9-d5635ba36b22.png)
+These next two images are an example of how a customer could sign in, view balance, deposit, and view stocks.
+
+As of now, the administrator is able to create an account and that account will be saved in the next entry of its designated text file. However, there is a segmentation fault every time the user enters ‘3’ to quit the program that has yet to be resolved. In addition, the administrator can only remove the last account generated on the list. Selecting an account otherwise throws an out of range error and as you can see from the screenshots, the accountList destructor gets called twice followed by a segmentation fault. The next sprint will be dedicated to resolving these errors.
  ## Installation/Usage
- Copy Code from the repository. Run cmake and make to compile the program. To use the program run the executable and follow the instructions in the interface provided
+ Copy Code from the repository. Run cmake and make to compile the program. To use the program run the executable and follow the instructions in the interface provided. If logging in as a user, use one of the existing IDs and password found in the one of the text files in the folder "files." To log in as an administrator, use the special admin access code found inside accountList.hpp.
  ## Testing
- Integrated testing is not yet finished. Once the program works completely from a UI perspective time will be spent integrating and re-verifying the individual test suites which can be found in branches dchan066/devtesting NaMoAr/development and loveechloee/development.
+ Integrated testing is not yet finished. Once the program works completely from a UI perspective time will be spent integrating and re-verifying the individual test suites which can be found in branches dchan066/devtesting NaMoAr/development and loveechloee/development. Eventaully, once the bugs have been resolved, we would like to create a YAML file to conducted continuous integration.
  ## Further Development Opportunities
  Currently, the fetch functionality for the stock share price is a method that generates a random number in a specific range, and each time that the user buys stock shares, they app would find the mean of current stock shares price of the user and the recently bought stock share price by the user. One can develop this application by adding a fetch functionality to inquiry a live stock share price for different stock markets and also save them in a vector (or any preferred list) the number of each stock share, its corresponding price, and the stock market's name.  
