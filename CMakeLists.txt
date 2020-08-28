@@ -4,7 +4,6 @@ ADD_SUBDIRECTORY(googletest)
 
 SET(CMAKE_CXX_STANDARD 11)
 
-
 ADD_EXECUTABLE(main
 	src/CheckingAccount.cpp
 	src/CheckingAccountProxy.cpp
@@ -16,8 +15,7 @@ ADD_EXECUTABLE(main
 	src/main.cpp
 )
 
-ADD_EXECUTABLE (test
-	
+ADD_EXECUTABLE (test	
 	src/CheckingAccount.cpp
 	src/CheckingAccountProxy.cpp
 	src/SavingAccount.cpp
@@ -27,5 +25,6 @@ ADD_EXECUTABLE (test
 	src/txtSave.cpp
 	test.cpp
 )
+
 TARGET_LINK_LIBRARIES(test gtest)
 TARGET_COMPILE_DEFINITIONS(test PRIVATE gtest_disable_pthreads=ON)

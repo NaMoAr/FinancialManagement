@@ -7,7 +7,7 @@ class TXTSave : public UserInfo {
 	public:
 		TXTSave() : UserInfo() {};
 
-		~TXTSave();
+//		~TXTSave();
 
 		void PrintList(); //Print all information into TXT file
 

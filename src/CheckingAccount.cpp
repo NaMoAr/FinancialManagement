@@ -29,6 +29,7 @@ CheckingAccount::CheckingAccount(double initialBalance, int theUserID, string pa
 
 CheckingAccount::~CheckingAccount()
 {
+//	cout << "Checking Account destructor" << endl;
 }
 /*
  * write stringstream buffer to a text file named by user's ID

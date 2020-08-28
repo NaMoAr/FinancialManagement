@@ -10,29 +10,29 @@ AccountList *AccountList::AccountList_ = 0;
 AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume that a file named UserInfo.csv and UserInfo.txt exist, they may be empty to show a new database
 // call Chloe's class to read the database file
  // NOTE: whenever a new file save type is added it must be included in the constructor and as a pushback here
-  rOne = object1;
-  rTwo = Object2;
+	rOne = object1;
+  	rTwo = Object2;
 
-  std::vector< std::vector<string> >::const_iterator row;
+  	std::vector< std::vector<string> >::const_iterator row;
 
-  vector<vector<string>> v = object1->ReadList();
+  	vector<vector<string>> v = object1->ReadList();
 
-  //cout << "read list" << endl;
+	//cout << "read list" << endl;
 
-  if (!v.empty()) {
-    for (int j = 0; j < (v.at(0)).size(); ++j) {
-      if((v.at(0)).at(j) == "c") {
-        CheckingAccountProxy* temp = new CheckingAccountProxy( stod((v.at(3)).at(j)), stoi((v.at(1)).at(j)), (v.at(2)).at(j), stod((v.at(4)).at(j)) );
-        database->emplace( stoi((v.at(1)).at(j)), temp );
-        //cout << "creating check" << endl;
-      }
-      else {
-        SavingAccountProxy* Temp = new SavingAccountProxy ( stod((v.at(3)).at(j)), stoi((v.at(1)).at(j)), (v.at(2)).at(j), stoi((v.at(5)).at(j)), stod((v.at(4)).at(j)) );
-        database->emplace( stoi((v.at(1)).at(j)), Temp );
-        //cout << "creating save" << endl;
-      }
-    }
-  }
+  	if (!(v.at(0)).empty()) {
+		for (int j = 0; j < (v.at(0)).size(); ++j) {
+			if((v.at(0)).at(j) == "c") {
+        			CheckingAccountProxy* temp = new CheckingAccountProxy( stod((v.at(3)).at(j)), stoi((v.at(1)).at(j)), (v.at(2)).at(j), stod((v.at(4)).at(j)) );
+        			database->emplace( stoi((v.at(1)).at(j)), temp );
+			        //cout << "creating check" << endl;
+      			}
+			else {
+			        SavingAccountProxy* Temp = new SavingAccountProxy ( stod((v.at(3)).at(j)), stoi((v.at(1)).at(j)), (v.at(2)).at(j), stoi((v.at(5)).at(j)), stod((v.at(4)).at(j)) );
+			        database->emplace( stoi((v.at(1)).at(j)), Temp );
+			        //cout << "creating save" << endl;
+      			}
+    		}
+  	}
 }
 
 AccountList::~AccountList() { //TODO Get this working suffering out of range
@@ -40,7 +40,8 @@ AccountList::~AccountList() { //TODO Get this working suffering out of range
 
 //cout << "we have reached the end times" <<endl;
 // delete all pointers in the hash map
-                int i = 1;                                                                                                                                                             int max = database->size();
+                int i = 1;                              
+                int max = database->size();
 //              cout << "database size" << max << endl;
                 while (i <= max) {
                 //cout << "i is: " << i <<endl;
@@ -52,7 +53,8 @@ AccountList::~AccountList() { //TODO Get this working suffering out of range
                                 cout << "submitting a checking account to save" << endl;
                                 CheckingAccountProxy* y = dynamic_cast<CheckingAccountProxy*>(x);
                                 //cout <<"expect c: "<< y->whatType()<< endl;
-                                rOne->SaveInfo("c",y->getID(), y->getPassword(), y->getBalance(), y->getMonthlyHomeRent());                                                                            rTwo->SaveInfo("c",y->getID(), y->getPassword(), y->getBalance(), y->getMonthlyHomeRent());
+                                rOne->SaveInfo("c",y->getID(), y->getPassword(), y->getBalance(), y->getMonthlyHomeRent());         
+                                rTwo->SaveInfo("c",y->getID(), y->getPassword(), y->getBalance(), y->getMonthlyHomeRent());
                         }
                         if (x->whatType() == 's'){//            NOTE: testing can't support this request at this time, we'll fo it later
                                 cout << "submitting a savings account to save" << endl;
@@ -66,9 +68,10 @@ AccountList::~AccountList() { //TODO Get this working suffering out of range
 
                 } //once objects in memory are deleted we can close the program
                 //delete this; // this might be overkill or could somehow break the program? not realy sure
+                cout << "Calling Print List" << endl;
                 rOne->PrintList();
                 rTwo->PrintList();
-//              cout << "Finishd printing" << endl;
+		cout << "Finished printing" << endl;
 }
 
 
@@ -143,7 +146,7 @@ void AccountList::deleteAccount () {
 	
 	database->erase(ID); 
 	toRemove = nullptr; // flag for reuse
-	delete toRemove; // may be an incorrect deletion type
+//	delete toRemove; // may be an incorrect deletion type
 	return;
 	// delete the object and set the pointer to null
 }

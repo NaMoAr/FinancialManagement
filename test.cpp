@@ -7,6 +7,7 @@
 #include "tests/CheckingAccountProxy_test.hpp"
 #include "tests/SavingAccount_test.hpp"
 #include "tests/SavingAccountProxy_test.hpp"
+#include "tests/userInfo_test.hpp"
 
 int main(int argc, char** argv) {
 	::testing::InitGoogleTest(&argc, argv);

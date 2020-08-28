@@ -1,6 +1,7 @@
 #include "../header/csvSave.hpp"
 
 void CSVSave::PrintList() {
+	cout << "Printing CSV" << endl;
 	ofstream outFS("files/UserInfo.csv");
 	if(!outFS.is_open()) {
 		cout << "Error! Cannot open CSV file for reading out" << endl;
