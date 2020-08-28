@@ -50,7 +50,8 @@ This first image depicts how an administrator would sign in and create an accoun
 
 ![Screenshot (327)](https://user-images.githubusercontent.com/56089475/91605277-0da1f100-e925-11ea-9b3b-01e29cf7f85e.png)
 ![Screenshot (329)](https://user-images.githubusercontent.com/56089475/91605278-0e3a8780-e925-11ea-88d9-d5635ba36b22.png)
-These next two images are an example of how a customer could sign in, view balance, deposit, and view stocks.
+![accounthistory](https://user-images.githubusercontent.com/59351131/91610782-bf91eb00-e92e-11ea-823f-0765ea9c90d7.JPG)
+These next three images are an example of how a customer could sign in, view balance, deposit, and view stocks and account history.
 
 As of now, the administrator is able to create an account and that account will be saved in the next entry of its designated text file. However, there is a segmentation fault every time the user enters ‘3’ to quit the program that has yet to be resolved. In addition, the administrator can only remove the last account generated on the list. Selecting an account otherwise throws an out of range error and as you can see from the screenshots, the accountList destructor gets called twice followed by a segmentation fault. The next sprint will be dedicated to resolving these errors.
  ## Installation/Usage
