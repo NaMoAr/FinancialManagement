@@ -24,7 +24,7 @@ AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume t
 			if((v.at(0)).at(j) == "c") {
         			CheckingAccountProxy* temp = new CheckingAccountProxy( stod((v.at(3)).at(j)), stoi((v.at(1)).at(j)), (v.at(2)).at(j), stod((v.at(4)).at(j)) );
         			database->emplace( stoi((v.at(1)).at(j)), temp );
-			        //cout << "creating check" << endl;
+				//cout << "creating check" << endl;
       			}
 			else {
 			        SavingAccountProxy* Temp = new SavingAccountProxy ( stod((v.at(3)).at(j)), stoi((v.at(1)).at(j)), (v.at(2)).at(j), stoi((v.at(5)).at(j)), stod((v.at(4)).at(j)) );

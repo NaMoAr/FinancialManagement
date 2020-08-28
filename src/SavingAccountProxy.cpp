@@ -31,6 +31,7 @@ SavingAccountProxy::SavingAccountProxy(double initialBalance, int theUserID,stri
 SavingAccountProxy::~SavingAccountProxy()
 {
 	//cout << "Saving Account Proxy destructor" << endl;
+	delete ptr;
 }
 /*
  write the new balance ofter each transaction depostie into a stringstream buffer

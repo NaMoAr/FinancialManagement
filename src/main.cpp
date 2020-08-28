@@ -18,7 +18,8 @@ int main() {
 	// call list interface
 	DATABASE->interface();
 	// program ends
-
+	delete readerOne;
+	delete readerTwo;
 return 0;
 
 
