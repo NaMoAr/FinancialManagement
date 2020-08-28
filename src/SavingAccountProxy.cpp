@@ -32,6 +32,7 @@ SavingAccountProxy::~SavingAccountProxy()
 {
 	//cout << "Saving Account Proxy destructor" << endl;
 	delete ptr;
+
 }
 /*
  write the new balance ofter each transaction depostie into a stringstream buffer
@@ -44,7 +45,7 @@ stringstream* SavingAccountProxy::deposit(double depMoney)
 	balance = getBalance() + depMoney;
 	s << "Saving account, $" << depMoney << " has been deposited, " << "New Balance: $" << balance << endl;
 	ss = &s;
-	cout << depMoney << " dollors has been deposited" << endl;
+	cout << depMoney << " dollars has been deposited" << endl;
 	setBalance(balance);
 	return ss;
 
@@ -68,7 +69,7 @@ stringstream* SavingAccountProxy::withdraw(double withMoney)
 	else {
 		s << "Saving account, $" << withMoney << " has been withdrawn, " << "New Balance: $" << balance << endl;
 		ss = &s;
-		cout << withMoney << " dollors has been withdrawn" << endl;
+		cout << withMoney << " dollars has been withdrawn" << endl;
 		setBalance(balance);
 		return ss;	
                 }
@@ -135,7 +136,7 @@ stringstream* SavingAccountProxy::buyStock( ) {
 	stringstream* ss = nullptr;
 	stockPrice = fetchStockPrice();
 	cout << "The current stock share's price is $ " << stockPrice << endl;
-	cout << "Hom many stock shares would you like to but?" << endl;
+	cout << "Hom many stock shares would you like to buy?" << endl;
 	cin >> stockNum;
 	if (stockNum * stockPrice > getBalance()) {
 		cout << "Sorry, there is not enough money in your account." << endl;
@@ -235,16 +236,16 @@ void SavingAccountProxy::Menu(){
     string pass = "";
 
 	do {           
-            cout << "1.Balance" << endl;
-            cout << "2.deposit" << endl;
-            cout << "3.withdraw" << endl;
+            cout << "1.View Balance" << endl;
+            cout << "2.Deposit" << endl;
+            cout << "3.Withdraw" << endl;
             cout << "4.Account History" << endl;
             cout << "5.My Stock Shares" << endl;
             cout << "6.See My Current Profit" << endl;
             cout << "7.Sell Stock Share" << endl;
             cout << "8.Buy Stock Share" << endl;
             cout << "9.Change Password" << endl;
-            cout << "10.logout" << endl;
+            cout << "10.Logout" << endl;
             cin >> option;
             if (option == "1") {
                 cout << "$" << getBalance() << endl;

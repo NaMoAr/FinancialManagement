@@ -38,7 +38,7 @@ stringstream* CheckingAccountProxy::deposit(double depMoney)
 	balance = getBalance() + depMoney;
 	s << "Checking account, $" << depMoney << " has been deposited, " << "New Balance: $" << balance<<endl;
 	ss = &s;
-	cout << depMoney << " dollors has been deposited" << endl;
+	cout << depMoney << " dollars has been deposited" << endl;
 	setBalance(balance);
 	return ss;
 	
@@ -66,7 +66,7 @@ stringstream* CheckingAccountProxy::withdraw(double withMoney)
 			balance = getBalance() - withMoney;
 			s << "Checking account, $" << withMoney << " has been withdrawn, " << "New Balance: $" << balance << endl;
 			ss = &s;
-			cout << withMoney << " dollors has been withdrawn" << endl;
+			cout << withMoney << " dollars has been withdrawn" << endl;
 			setBalance(balance);
 			return ss;
 		}
@@ -81,7 +81,7 @@ stringstream* CheckingAccountProxy::withdraw(double withMoney)
 		balance = getBalance() - withMoney;
 		s << "Checking account, $" << withMoney << " has been withdrawn, " << "New Balance: $" << balance << endl;
 		ss = &s;
-		cout << withMoney << " dollors has been withdrawn" << endl;
+		cout << withMoney << " dollars has been withdrawn" << endl;
 		setBalance(balance);
 		return ss;
 	}
@@ -178,13 +178,13 @@ void CheckingAccountProxy::Menu(){
         string pass = "";
 
         do {
-              cout << "1.Balance" << endl;
-              cout << "2.deposit" << endl;
-              cout << "3.withdraw" << endl;
+              cout << "1.View Balance" << endl;
+              cout << "2.Deposit" << endl;
+              cout << "3.Withdraw" << endl;
               cout << "4.Account History" << endl;
-              cout << "5.budget planning" << endl;
+              cout << "5.Budget Planning" << endl;
               cout << "6.Change Password" << endl;
-              cout << "7.logout" << endl;
+              cout << "7.Logout" << endl;
               cin >> option;
               if (option == "1") {
                      cout << "$" << getBalance() << endl;
