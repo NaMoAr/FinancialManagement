@@ -28,6 +28,7 @@ SavingAccount::SavingAccount(double initialBalance, int theUserID,string pass, i
 
 SavingAccount::~SavingAccount()
 {
+	//cout << "Saving Account destructor" << endl;
 }
 /*
  * write stringstream buffer to a text file named by user's ID

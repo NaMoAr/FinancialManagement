@@ -7,7 +7,7 @@ class CSVSave : public UserInfo {
 	public:
 		CSVSave() : UserInfo() {};
 
-		~CSVSave();
+//		~CSVSave();
 
 		void PrintList(); //Print all information into CSV file
 

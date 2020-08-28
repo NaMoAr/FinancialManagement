@@ -24,7 +24,8 @@ CheckingAccountProxy::CheckingAccountProxy(double initialBalance, int theUserID,
 
 CheckingAccountProxy::~CheckingAccountProxy()
 {
-	
+	//cout << "Checking Account Proxy destructor" << endl;	
+	delete ptr;
 }
 /*
  * write the new balance ofter each transaction depostie into a stringstream buffer
