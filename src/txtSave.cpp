@@ -2,7 +2,6 @@
 
 
 void TXTSave::PrintList() {
-	cout << "Printing TXT" << endl;
 	ofstream outFS("files/UserInfo.txt");
 	if (!outFS.is_open()) {
 		cout << "Error! Cannot open TXT file for reading out" << endl;

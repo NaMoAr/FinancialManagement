@@ -26,8 +26,8 @@ class AccountList {
 	
 		UserInfo* rTwo; // a vector that holds pointers to objects that save the database in different filetypes, to be populated in .cpp
 		UserInfo* rOne;
-		std::string adminAccess = "admin";	
-//		std::string adminAccess = "96a~eU=tWyVkz'4V"; // a randomly generated 16 character password to verify an admin before allowing access to admin functions TODO: !!BEYOND THE SCOPE OF THIS VERSION OF THE PROJECT!! use a tool to periodicall generate a new admin access code which is available only to the administrator.
+	
+		std::string adminAccess = "96a~eU=tWyVkz'4V"; // a randomly generated 16 character password to verify an admin before allowing access to admin functions TODO: !!BEYOND THE SCOPE OF THIS VERSION OF THE PROJECT!! use a tool to periodicall generate a new admin access code which is available only to the administrator.
 
 		void adminMenu(); // a function that helps admins navigate creation and destruction of accounts					Accessed by interface
 

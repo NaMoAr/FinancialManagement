@@ -38,7 +38,7 @@ AccountList::AccountList (UserInfo* object1, UserInfo* Object2) { // we assume t
 AccountList::~AccountList() { //TODO Get this working suffering out of range
 // call Chloe's class to write the account data to the database file
 
-//cout << "we have reached the end times" <<endl;
+		cout << "we have reached the end times" <<endl;
 // delete all pointers in the hash map
                 int i = 1;                              
                 int max = database->size();
@@ -50,14 +50,14 @@ AccountList::~AccountList() { //TODO Get this working suffering out of range
                         i++;
                 //      cout << x->whatType()<< endl;
                         if (x->whatType() == 'c'){
-                                cout << "submitting a checking account to save" << endl;
+  //                              cout << "submitting a checking account to save" << endl;
                                 CheckingAccountProxy* y = dynamic_cast<CheckingAccountProxy*>(x);
                                 //cout <<"expect c: "<< y->whatType()<< endl;
                                 rOne->SaveInfo("c",y->getID(), y->getPassword(), y->getBalance(), y->getMonthlyHomeRent());         
                                 rTwo->SaveInfo("c",y->getID(), y->getPassword(), y->getBalance(), y->getMonthlyHomeRent());
                         }
                         if (x->whatType() == 's'){//            NOTE: testing can't support this request at this time, we'll fo it later
-                                cout << "submitting a savings account to save" << endl;
+//                                cout << "submitting a savings account to save" << endl;
                                 SavingAccountProxy* z = dynamic_cast<SavingAccountProxy*>(x);
                                 //cout<<"expect s: " << z->whatType()<< endl;
                                 rOne->SaveInfo("s",z->getID(), z->getPassword(), z->getBalance(),z->getStockPrice(), z->getStockNum() );
@@ -68,10 +68,10 @@ AccountList::~AccountList() { //TODO Get this working suffering out of range
 
                 } //once objects in memory are deleted we can close the program
                 //delete this; // this might be overkill or could somehow break the program? not realy sure
-                cout << "Calling Print List" << endl;
+                // cout << "Calling Print List" << endl;
                 rOne->PrintList();
                 rTwo->PrintList();
-		cout << "Finished printing" << endl;
+//		cout << "Finished printing" << endl;
 }
 
 
