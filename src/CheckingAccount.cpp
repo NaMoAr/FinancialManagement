@@ -53,7 +53,7 @@ void CheckingAccount::logOut(stringstream* ss)
  */
 bool CheckingAccount::accountHistory()
 {
-	cout << "Today's transactions would appear in the account history the next day after the bank approval."<< endl;
+	cout << "Today's transactions will appear in the account history the next day after the bank approval."<< endl;
 	
         string id = to_string(userID);
 	string filename ="histories/"+ id + ".txt";
