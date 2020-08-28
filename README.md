@@ -18,14 +18,14 @@ Tools:
 
 Input and output:
 
-Upon the user's logging in by providing the right id and password, the input of our application initially comes from a database that holds the information about each account (saving/checking). Then the user can insert the value of money that he wants to deposit, withdraw. Also, update the monthly home rent(for checking account) or update the number of stock shares (for saving account)
-The output of our application would be the balance of the account, account history (showing transactions from the opening of an account up until now), the profit that has been made at each moment(for saving account).
+Upon the user's logging in by providing the right id and password, the input of our application initially comes from a database that holds the information about each account (saving/checking). Then the user can insert the value of money that he wants to deposit, withdraw. Also, update the monthly home rent(for checking account) or update the number of stock shares (for saving account).
+The output of our application would be the balance of the account, account history (showing transactions from the opening of an account up until now), and the profit that has been made at each moment(for saving account).
 
 
 Design Patterns:
 
 Proxy Design Pattern: 
-Used to prevent many write operations to the file (since information on account history will be stored on text documents) we will use a proxy ostream t store all changes to the account history when the user is finished using the program. Our design resembling a proxy design pattern by making a delay to show transactions in the account history in order to receive confirmation from admin(Bank). The user would interact with proxy classes and the changes to an account would happen in the real classes uopn admin confirmation. 
+Used to prevent many write operations to the file (since information on account history will be stored on text documents) we will use a proxy ostream to store all changes to the account history when the user is finished using the program. Our design resembling a proxy design pattern by making a delay to show transactions in the account history in order to receive confirmation from admin(Bank). The user would interact with proxy classes and the changes to an account would happen in the real classes uopn admin confirmation. 
 
 Singleton Design Pattern:
 Used to ensure that only one list object is created. This is done to consolidate all users to one list and avoid the need to traverse multiple incomplete list objects.
@@ -51,3 +51,5 @@ At this time the project cannot change the input/output file, coming sprints are
  Copy Code from the repository. Run cmake and make to compile the program. To use the program run the executable and follow the instructions in the interface provided
  ## Testing
  Integrated testing is not yet finished. Once the program works completely from a UI perspective time will be spent integrating and re-verifying the individual test suites which can be found in branches dchan066/devtesting NaMoAr/development and loveechloee/development.
+ ## Further Development Opportunities
+ Currently, the fetch functionality for the stock share price is a method that generates a random number in a specific range, and each time that the user buys stock shares, it would find the mean of current stock shares price of the user and the recently bought stock share price by the user. One can develop this application by adding a fetch functionality to inquiry a live stock share price for different stock markets and also the save them in a vector (or any preferred list) the number of each stock share, its corresponding price, and the stock market's name.  
