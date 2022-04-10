@@ -24,7 +24,7 @@ The output of our application would be the balance of the account, account histo
 **Design Patterns:**
 
 Proxy Design Pattern: 
- * Used to prevent many write operations to the file (since information on account history will be stored on text documents) we will use a proxy ostream to store all changes to the account history when the user is finished using the program. Our design resembling a proxy design pattern by making a delay to show transactions in the account history in order to receive confirmation froNajmeh Mohammadi Aranm admin(Bank). The user would interact with proxy classes and the changes to an account would happen in the real classes uopn admin confirmation. (by Najmeh Mohammadi Arani)
+ * Used to prevent many write operations to the file (since information on account history will be stored on text documents) we will use a proxy ostream to store all changes to the account history when the user is finished using the program. Our design resembling a proxy design pattern by making a delay to show transactions in the account history in order to receive confirmation from admin(Bank). The user would interact with proxy classes and the changes to an account would happen in the real classes uopn admin confirmation. (by Najmeh Mohammadi Arani)
 
 Singleton Design Pattern:
  * Used to ensure that only one list object is created. This is done to consolidate all users to one list and avoid the need to traverse multiple incomplete list objects. (by David Chang)
